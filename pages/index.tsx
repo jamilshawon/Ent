@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";  // Add this import
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
@@ -12,6 +12,9 @@ export default function Home() {
   // Close sidebar if clicked outside of the sidebar
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      // Ensure the target is an Element before using closest()
+      if (!(event.target instanceof Element)) return;
+
       if (
         sidebarOpen &&
         !event.target.closest(`.${styles.sidebar}`) &&
@@ -65,7 +68,7 @@ export default function Home() {
       <div className={styles.videoList}>
         {Array.from({ length: 6 }).map((_, index) => (
           <div key={index} className={styles.videoCard}>
-            <img src="https://via.placeholder.com/300x150" alt="Video Thumbnail" />
+            <img src="https://via.placeholder.com/300x150" alt={`Video Thumbnail ${index + 1}`} />
             <div className="info">
               <h4>Video Title {index + 1}</h4>
             </div>
