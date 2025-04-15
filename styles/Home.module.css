@@ -1,116 +1,157 @@
-.container {
-  padding: 0 2rem;
-}
-
-.main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
+/* Header Styles */
+.header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-}
-
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
-}
-
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-}
-
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
-}
-
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
-}
-
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
-}
-
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
+  background-color: #333;
+  padding: 15px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 .logo {
-  height: 1em;
-  margin-left: 0.2rem;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
+.search {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.signIn {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signIn:hover {
+  background-color: #0056b3;
+}
+
+.toggle-btn {
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+  background: transparent;
+  border: none;
+  display: block;
+  position: absolute;
+  left: 20px;  /* Place the toggle button on the left */
+  top: 50%;     /* Vertically center the button */
+  transform: translateY(-50%);
+  z-index: 1100; /* Ensure the button is above the sidebar */
+}
+
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  left: -250px; /* Initially hidden */
+  top: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #333;
+  transition: left 0.3s ease-in-out;
+  padding-top: 50px;
+  z-index: 999;
+}
+
+.sidebar.open {
+  left: 0; /* When open, the sidebar will slide in */
+}
+
+.sidebar .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+/* NavLinks Styles */
+.navLinks a {
+  display: block;
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.navLinks a:hover {
+  background-color: #444;
+}
+
+/* Category Section */
+.section {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  padding: 0 20px;
+  margin-top: 80px; /* Add top margin to avoid overlap with the header */
+}
+
+.category {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.category:hover {
+  background-color: #444;
+}
+
+/* Video List Styles */
+.videoList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.videoCard {
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.videoCard img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.videoCard .info {
+  padding: 10px;
+}
+
+.videoCard h4 {
+  font-size: 16px;
+  margin-top: 10px;
+  color: #333;
+}
+
+/* Footer Styles */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
