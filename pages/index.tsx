@@ -34,9 +34,9 @@ export default function Home() {
     <div>
       {/* Header */}
       <header className={styles.header}>
+        <button className={styles.signIn}>Sign In</button>
         <div className={styles.logo}>VID-LAB</div>
         <input type="text" className={styles.search} placeholder="Search..." />
-        <button className={styles.signIn}>Sign In</button>
         {/* Toggle Sidebar Button on Left */}
         <span className={styles["toggle-btn"]} onClick={toggleSidebar}>
           ☰
@@ -82,4 +82,3 @@ export default function Home() {
       </footer>
     </div>
   );
-}

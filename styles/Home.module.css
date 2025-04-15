@@ -44,7 +44,7 @@
   color: white;
   background: transparent;
   border: none;
-  display: block;
+  display: none; /* Hide by default */
   position: absolute;
   left: 20px;  /* Place the toggle button on the left */
   top: 50%;     /* Vertically center the button */
@@ -154,4 +154,154 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+
+/* ===== Responsive Styles ===== */
+
+/* Small screens: max 480px (phones) */
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
+
+  .search {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .signIn {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .toggle-btn {
+    display: block; /* Show hamburger menu */
+  }
+
+  .videoList {
+    grid-template-columns: 1fr; /* Single column */
+  }
+
+  .section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .category {
+    margin-bottom: 10px;
+  }
+
+  .sidebar {
+    width: 200px;
+  }
+}
+
+/* Small screens to medium screens: max 768px (tablets) */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
+  .logo {
+    font-size: 44px;
+    font-weight: bold;
+    margin-left: 70px;
+    position:absolute;
+  }
+  .toggle-btn {
+    left: 20px;  /* Place the toggle button on the left */
+    top: 28%;     /* Vertically center the button */
+    font-size: 44px;
+    
+  }
+  
+
+  .search {
+    width: 100%;
+    margin: 20px 0;
+   
+    }
+
+  .signIn {
+    width: 23%;
+    margin-left: 310px;
+  }
+
+  .videoList {
+    grid-template-columns: 1fr 1fr; /* Two columns */
+  }
+
+  .section {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 160px;
+  }
+
+  .category {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    
+  }
+
+  .toggle-btn {
+    display: block; /* Show hamburger menu */
+  }
+
+  .sidebar {
+    top: 10%;
+  }
+}
+
+/* Medium screens: 769px to 1024px (tablets and small laptops) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .videoList {
+    grid-template-columns: 1fr 1fr; /* Two columns */
+  }
+
+  .section {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .category {
+    flex: 1;
+    margin-right: 10px;
+  }
+
+  .category:last-child {
+    margin-right: 0;
+  }
+
+  .toggle-btn {
+    display: none; /* Hide hamburger menu */
+  }
+}
+
+/* Large screens: 1025px to 1440px (laptops/desktops) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .videoList {
+    grid-template-columns: 1fr 1fr 1fr; /* Three columns */
+  }
+
+  .section {
+    margin-top: 100px; /* Extra spacing on large screens */
+  }
+}
+
+/* Extra large screens: 1441px and above (large desktops) */
+@media (min-width: 1441px) {
+  .videoList {
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* Four columns on large desktops */
+  }
+
+  .section {
+    margin-top: 120px; /* Extra spacing for large desktops */
+  }
 }
