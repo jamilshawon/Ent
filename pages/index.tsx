@@ -34,7 +34,10 @@ export default function Home() {
     <div>
       {/* Header */}
       <header className={styles.header}>
-        <button className={styles.signIn}>Sign In</button>
+        <Link href="/register"> {/* Link component wrapping the button */}
+          <button className={styles.signIn}>Sign In</button>  {/* Button will navigate to /register */}
+        </Link>
+        
         <div className={styles.logo}>VID-LAB</div>
         <input type="text" className={styles.search} placeholder="Search..." />
         {/* Toggle Sidebar Button on Left */}
