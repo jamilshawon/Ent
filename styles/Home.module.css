@@ -28,13 +28,14 @@
 }
 
 .signIn {
-  padding: 8px 12px;
+  padding: 8px 10px;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-left: 88%;
+  margin-top: -2%;
   position: absolute;
 }
 
@@ -159,7 +160,6 @@
   bottom: 0;
   width: 100%;
 }
-
 /* ===== Responsive Styles ===== */
 
 /* Small screens: max 480px (phones) */
@@ -260,7 +260,7 @@
   }
 
   .sidebar {
-    
+    top:93px;
   }
 }
 

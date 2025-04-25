@@ -34,7 +34,7 @@ export default function Home() {
     <div>
       {/* Header */}
       <header className={styles.header}>
-        <Link href="/register"> {/* Link component wrapping the button */}
+        <Link href="/signin"> {/* Link component wrapping the button */}
           <button className={styles.signIn}>Sign In</button>  {/* Button will navigate to /register */}
         </Link>
         
