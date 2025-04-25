@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import styles from "../styles/Register.module.css"; // or your own signin style
 import Layout from "../components/Layout"; 
+import Link from "next/link";
 
 
 export default function SignIn() {
@@ -51,7 +52,7 @@ export default function SignIn() {
       </form>
 
       <p className={styles["form-footer"]}>
-        Don’t have an account? <a href="/register">Register</a>
+        Don’t have an account? <Link href="/register">Register</Link>
       </p>
     </div>
       </Layout>
