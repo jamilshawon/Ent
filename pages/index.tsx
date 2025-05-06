@@ -10,7 +10,7 @@ export default function Home() {
         <div className={styles.category}>Latest</div>
         <div className={styles.category}>Popular</div>
         <div className={styles.category}>Upcoming</div>
-        <div className={styles.category}>Most Engaged</div>
+        <div className={styles.category}>Engaged</div>
       </section>
 
       {/* Video List */}

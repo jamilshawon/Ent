@@ -12,9 +12,12 @@
   background-color: #0a98e7;
   color: black;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 1px;
   cursor: pointer;
   text-align: center;
+  box-shadow: inset 0 0 0 2px #01f4e0;
+
+  
 }
 
 .category:hover {
@@ -28,6 +31,7 @@
   gap: 20px;
   padding: 0 20px;
   margin-bottom: 20px;
+  height: 1200px;
 }
 
 .videoCard {
@@ -93,7 +97,9 @@
 /* Small screens to medium screens: max 768px (tablets) */
 @media (max-width: 768px) {
   .videoList {
-    grid-template-columns: 1fr 1fr; /* Two columns */
+    grid-template-columns: 1fr; /* Two columns */
+    margin-top: -100px;
+    
   }
 
   .section {
@@ -101,6 +107,32 @@
     align-items: stretch;
     margin-top: 155px;
   }
+  /* Individual adjustments */
+  .category:nth-child(1) {
+    font-size: 22px;
+    transform: translateX(-5%); /* Move to the left */
+    width: 50%;
+  }
+
+  .category:nth-child(2) {
+    font-size: 22px;
+    transform: translateX(98%) translateY(-60px); /* Move to the right */
+    width: 50%;
+  }
+
+  .category:nth-child(3) {
+    font-size: 22px;
+    transform: translateX(-5%)translateY(-65px); /* Slight move */
+    width: 50%;
+  }
+
+  .category:nth-child(4) {
+    font-size: 22px;
+    transform: translateX(98%) translateY(-125px);
+    width: 50%;
+  }
+
+  
 }
 
 /* Medium screens: 769px to 1024px (tablets and small laptops) */

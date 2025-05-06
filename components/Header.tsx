@@ -16,7 +16,7 @@ export default function Header() {
   useEffect(() => {
     const updateSidebarStyle = () => {
       const width = window.innerWidth;
-      const isAuthPage = ["/register", "/signin"].includes(router.pathname);
+      const isAuthPage = ["/register", "/signin","/index"].includes(router.pathname);
 
       let top = "0px";
       let paddingTop = "50px";
