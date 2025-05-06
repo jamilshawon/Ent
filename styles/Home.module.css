@@ -1,99 +1,3 @@
-/* Header Styles */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #333;
-  padding: 15px 20px;
-  position: fixed;
-   flex-wrap: wrap; 
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
-
-.logo {
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.search {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 20%;
-  margin-right: 10%;
-}
-
-.signIn {
-  padding: 8px 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 88%;
-  margin-top: -2%;
-  position: absolute;
-}
-
-.signIn:hover {
-  background-color: #0056b3;
-}
-
-.toggle-btn {
-  font-size: 30px;
-  cursor: pointer;
-  color: white;
-  background: transparent;
-  border: none;
-  display: none; /* Hide by default */
-  position: absolute;
-  left: 90px;  /* Place the toggle button on the left */
-  top: 50%;     /* Vertically center the button */
-  transform: translateY(-50%);
-  z-index: 1100; /* Ensure the button is above the sidebar */
-}
-
-/* Sidebar Styles */
-.sidebar {
-  position: fixed;
-  left: -250px; /* Initially hidden */
-  top: 0;
-  height: 100%;
-  width: 250px;
-  background-color: #333;
-  transition: left 0.3s ease-in-out;
-  padding-top: 50px;
-  z-index: 999;
-}
-
-.sidebar.open {
-  left: 0; /* When open, the sidebar will slide in */
-}
-
-.sidebar .close-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 30px;
-  color: white;
-  cursor: pointer;
-}
-
-/* NavLinks Styles */
-.navLinks a {
-  display: block;
-  padding: 15px;
-  color: white;
-  text-decoration: none;
-}
-
-.navLinks a:hover {
-  background-color: #444;
-}
 
 /* Category Section */
 .section {
@@ -105,8 +9,8 @@
 }
 
 .category {
-  background-color: #333;
-  color: white;
+  background-color: #0a98e7;
+  color: black;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -114,7 +18,7 @@
 }
 
 .category:hover {
-  background-color: #444;
+  background-color: #09c6cd;
 }
 
 /* Video List Styles */
@@ -154,36 +58,24 @@
 .footer {
   text-align: center;
   padding: 20px;
-  background-color: #333;
+  background-color: black;
   color: white;
+  box-shadow: inset 0 0 0 1px #01f4e0; /* Inner border effect */
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
+  box-sizing: border-box;
 }
+
+
+
+
+
 /* ===== Responsive Styles ===== */
 
 /* Small screens: max 480px (phones) */
 @media (max-width: 480px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 15px;
-  }
-
-  .search {
-    width: 100%;
-    margin: 10px 0;
-  }
-
-  .signIn {
-    width: 100%;
-    margin: 10px 0;
-  }
-
-  .toggle-btn {
-    display: block; /* Show hamburger menu */
-  }
-
   .videoList {
     grid-template-columns: 1fr; /* Single column */
   }
@@ -196,45 +88,10 @@
   .category {
     margin-bottom: 10px;
   }
-
-  .sidebar {
-    width: 200px;
-  }
 }
 
 /* Small screens to medium screens: max 768px (tablets) */
 @media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 15px;
-  }
-  .logo {
-    font-size: 34px;
-    font-weight: bold;
-    margin-left: 70px;
-    position:absolute;
-  }
-  .toggle-btn {
-    left: 20px;  /* Place the toggle button on the left */
-    top: 28%;     /* Vertically center the button */
-    font-size: 44px;
-    
-  }
-  
-
-  .search {
-    width: 100%;
-    margin-top: 14%;
-
-   
-    }
-
-  .signIn {
-    width: 23%;
-    margin-left: 70%;
-  }
-
   .videoList {
     grid-template-columns: 1fr 1fr; /* Two columns */
   }
@@ -242,25 +99,7 @@
   .section {
     flex-direction: column;
     align-items: stretch;
-    margin-top: 125px;
-  }
-
-  .category {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-    
-  }
-
-  .toggle-btn {
-    display: block; /* Show hamburger menu */
-  }
-
-  .sidebar {
-    top:93px;
+    margin-top: 155px;
   }
 }
 
@@ -273,22 +112,9 @@
   .section {
     flex-direction: row;
     justify-content: space-between;
-    
   }
-  .logo {
-    font-size: 34px;
-    margin-left: 10%;
 
-  }
-  .toggle-btn {
-    left: 20px;  /* Place the toggle button on the left */
-    top: 48%;     /* Vertically center the button */
-    font-size: 40px;
-
-  }
-  .search {
-    width: 40%;
-    }
+  
 
   .category {
     flex: 1;
@@ -298,13 +124,6 @@
   .category:last-child {
     margin-right: 0;
   }
-
-  .toggle-btn {
-    display: block; /* Show hamburger menu */
-  }
-  .sidebar {
-    top: 8%;
-  }
 }
 
 /* Large screens: 1025px to 1440px (laptops/desktops) */
@@ -312,42 +131,18 @@
   .videoList {
     grid-template-columns: 1fr 1fr 1fr; /* Three columns */
   }
-  .logo {
-    font-size: 34px;
-    margin-left: 7%;
-
-  }
-  .toggle-btn {
-    left: 20px;  /* Place the toggle button on the left */
-    top: 48%;     /* Vertically center the button */
-    font-size: 38px;
-
-  }
-  .search {
-    width: 40%;
-    }
-  .sidebar {
-    top: 8%;
-  }
   .category {
     flex: 1;
     margin-right: 10px;
     font-size: 15px;
-    
   }
+
   .category:last-child {
     margin-right: 50%;
   }
-  
-
- 
 }
 
 /* Extra large screens: 1441px and above (large desktops) */
-.toggle-btn {
-  display: block; /* Show hamburger menu */
-}
-
 @media (min-width: 1441px) {
   .videoList {
     grid-template-columns: 1fr 1fr 1fr 1fr; /* Four columns on large desktops */
@@ -356,7 +151,5 @@
   .section {
     margin-top: 120px; /* Extra spacing for large desktops */
   }
-  .toggle-btn {
-    display: block; /* Show hamburger menu */
-  }
 }
+

@@ -75,7 +75,7 @@
 
 /* Button */
 .submitBtn {
-  background-color: #007bff;
+  background: linear-gradient(#01f4e0, #09c6cd); /* same as .signIn */
   color: #fff;
   padding: 14px;
   font-size: 16px;
@@ -83,8 +83,9 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, box-shadow 0.3s;
 }
+
 
 .submitBtn:hover {
   background-color: #0056b3;
@@ -132,3 +133,15 @@
     font-size: 14px;
   }
 }
+@media (min-width: 769px) and (max-width: 1024px) {
+  
+  .category {
+    flex: 1;
+    margin-right: 10px;
+  }
+
+  .category:last-child {
+    margin-right: 0;
+  }
+}
+

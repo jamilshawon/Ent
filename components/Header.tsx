@@ -1,37 +1,50 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import styles from '../styles/Home.module.css';
+import styles from './Header.module.css';
 import Link from 'next/link';
 
 export default function Header() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const router = useRouter();
   const [sidebarStyle, setSidebarStyle] = useState({});
+  const router = useRouter();
 
   const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
+    setSidebarOpen((prev) => !prev);
   };
 
-  // Update sidebar style based on the current route (Register or Sign In)
+  // Responsive logic for top/padding based on screen and route
   useEffect(() => {
-    if (router.pathname === "/register" || router.pathname === "/signin") {
-      // Set style for both Register and Sign In pages
-      setSidebarStyle({
-        top: "109px", // Adjust the vertical position
-        paddingTop: "20px" // Adjust the padding inside the sidebar
-      });
-    } else {
-      // Default style for other pages
-      setSidebarStyle({
-        top: "0px",
-        paddingTop: "50px"  // default padding inside the box
-      });
-    }
+    const updateSidebarStyle = () => {
+      const width = window.innerWidth;
+      const isAuthPage = ["/register", "/signin"].includes(router.pathname);
+
+      let top = "0px";
+      let paddingTop = "50px";
+
+      if (width <= 480) {
+        top = isAuthPage ? "80px" : "60px";
+        paddingTop = isAuthPage ? "10px" : "30px";
+      } else if (width <= 768) {
+        top = isAuthPage ? "80px" : "60px";
+        paddingTop = isAuthPage ? "15px" : "30px";
+      } else {
+        top = isAuthPage ? "60px" : "0px";
+        paddingTop = isAuthPage ? "20px" : "50px";
+      }
+
+      setSidebarStyle({ top, paddingTop });
+    };
+
+    updateSidebarStyle();
+    window.addEventListener('resize', updateSidebarStyle);
+    return () => window.removeEventListener('resize', updateSidebarStyle);
   }, [router.pathname]);
 
+  // Close sidebar when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (!(event.target instanceof Element)) return;
+
       if (
         sidebarOpen &&
         !event.target.closest(`.${styles.sidebar}`) &&
@@ -42,9 +55,7 @@ export default function Header() {
     };
 
     document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
+    return () => document.removeEventListener("click", handleClickOutside);
   }, [sidebarOpen]);
 
   return (
@@ -58,14 +69,14 @@ export default function Header() {
         className={styles.search}
         placeholder="Search..."
       />
-
       <span className={styles["toggle-btn"]} onClick={toggleSidebar}>
         ☰
       </span>
 
+      {/* Sidebar */}
       <div
         className={`${styles.sidebar} ${sidebarOpen ? styles.open : ""}`}
-        style={sidebarStyle} // Apply dynamic top and paddingTop based on route
+        style={sidebarStyle}
       >
         <span className={styles["close-btn"]} onClick={toggleSidebar}>
           &times;
