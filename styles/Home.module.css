@@ -7,56 +7,70 @@
   padding: 0 20px;
   margin-top: 80px; /* Add top margin to avoid overlap with the header */
 }
+.categoryContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem; /* Note: gap now also works with flex in modern browsers */
+  margin-bottom: 1rem
+}
 
 .category {
-  background-color: #0a98e7;
-  color: black;
-  padding: 10px;
+  font-size: 18px;
+  padding: 12px;
+  border: 2px solid #17c5f7; /* ✅ Combined shorthand */
   border-radius: 1px;
+  background-color: #17c5f7;
   cursor: pointer;
-  text-align: center;
-  box-shadow: inset 0 0 0 2px #01f4e0;
-
-  
 }
 
-.category:hover {
-  background-color: #09c6cd;
+.category.active {
+  background-color: white;
 }
 
-/* Video List Styles */
 .videoList {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-  padding: 0 20px;
-  margin-bottom: 20px;
-  height: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center; /* Center cards instead of left-align */
+  padding: 1rem;
+  background-color: #f9f9f9; /* Light background for contrast */
+  border-radius: 8px;
 }
 
 .videoCard {
+  width: 100%;
+  max-width: 300px;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
+}
+
+.videoCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .videoCard img {
   width: 100%;
-  height: 150px;
-  object-fit: cover;
+  display: block;
+  border-radius: 0; /* Image fills top edge — cleaner */
 }
 
 .videoCard .info {
-  padding: 10px;
+  padding: 0.75rem 1rem;
 }
 
-.videoCard h4 {
-  font-size: 16px;
-  margin-top: 10px;
+.videoCard .info h4 {
+  margin: 0;
+  font-size: 1rem;
   color: #333;
+  font-weight: 600;
 }
+
 
 /* Footer Styles */
 .footer {
@@ -96,67 +110,79 @@
 
 /* Small screens to medium screens: max 768px (tablets) */
 @media (max-width: 768px) {
+  .categoryContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 5px;
+    justify-items: center;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 65px;
+   
+  }
+
+  .category {
+    font-size: 16px;
+    padding: 8px;
+    width: 100%;
+    /* Adjust as needed */
+    text-align: center;
+    background-color: #17c5f7;
+    border: 2px solid #17c5f7;
+    border-radius: 1px;
+    color: black;
+    cursor: pointer;
+  }
   .videoList {
-    grid-template-columns: 1fr; /* Two columns */
-    margin-top: -100px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center; /* Center videos horizontally */
+    padding: 1rem;
     
   }
 
-  .section {
-    flex-direction: column;
-    align-items: stretch;
-    margin-top: 155px;
-  }
-  /* Individual adjustments */
-  .category:nth-child(1) {
-    font-size: 22px;
-    transform: translateX(-5%); /* Move to the left */
-    width: 50%;
-  }
-
-  .category:nth-child(2) {
-    font-size: 22px;
-    transform: translateX(98%) translateY(-60px); /* Move to the right */
-    width: 50%;
+  .videoCard {
+    width: 100%;
+    max-width: 90%; /* Make video cards take 90% of the screen width */
+    margin: 0 auto; /* Center the video cards */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
   }
 
-  .category:nth-child(3) {
-    font-size: 22px;
-    transform: translateX(-5%)translateY(-65px); /* Slight move */
-    width: 50%;
+  .videoCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   }
 
-  .category:nth-child(4) {
-    font-size: 22px;
-    transform: translateX(98%) translateY(-125px);
-    width: 50%;
+  .videoCard img {
+    width: 100%;
+    display: block;
+    border-radius: 0;
   }
 
-  
+  .videoCard .info {
+    padding: 0.75rem 1rem;
+  }
+
+  .videoCard .info h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+    font-weight: 600;
+  }
 }
 
 /* Medium screens: 769px to 1024px (tablets and small laptops) */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .videoList {
-    grid-template-columns: 1fr 1fr; /* Two columns */
-  }
-
-  .section {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
   
-
-  .category {
-    flex: 1;
-    margin-right: 10px;
-  }
-
-  .category:last-child {
-    margin-right: 0;
-  }
 }
+
+
+
 
 /* Large screens: 1025px to 1440px (laptops/desktops) */
 @media (min-width: 1025px) and (max-width: 1440px) {
