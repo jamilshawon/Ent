@@ -28,7 +28,7 @@ export default function Header() {
         top = isAuthPage ? "80px" : "60px";
         paddingTop = isAuthPage ? "15px" : "30px";
       } else {
-        top = isAuthPage ? "60px" : "0px";
+        top = isAuthPage ? "73px" : "67px";
         paddingTop = isAuthPage ? "20px" : "50px";
       }
 

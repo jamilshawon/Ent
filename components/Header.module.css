@@ -134,3 +134,90 @@
     font-size: 34px;
   }
 }
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .header{
+   padding: 20px;
+  }
+  .logo {
+    font-size: 34px;
+    margin-left: -15%;
+  }
+  .search {
+    width: 40%;
+    margin-right: 15%;
+  }
+  .signIn {
+    width: 8%;
+    right: 3%;
+    position: absolute;
+    margin-left: 0;
+    margin-top: -1.5%;
+  }
+  .toggle-btn {
+    font-size: 44px;
+    top: 50%;
+    left: 20px;
+    display: block;
+  }
+  .sidebar {
+    width: 250px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1440px){
+  .header{
+   padding: 20px;
+  }
+  .logo {
+    font-size: 34px;
+    margin-left: -30%;
+  }
+  .search {
+    width: 30%;
+    margin-right: 10%;
+  }
+  .signIn {
+    width: 6%;
+    right: 3%;
+    position: absolute;
+    margin-left: 0;
+    margin-top: -1.2%;
+  }
+  .toggle-btn {
+    font-size: 50px;
+    top: 48%;
+    left: 20px;
+    display: block;
+  }
+  .sidebar {
+    width: 250px;
+    padding-top: 15%;
+  }
+}
+@media (min-width: 1440px) {
+  .header{
+   padding: 20px;
+  }
+  .logo {
+    font-size: 40px;
+    margin-left: -36%;
+    margin-top:-5px;
+  }
+  .search {
+    width: 30%;
+    margin-right: 9%;
+  }
+  .signIn {
+    width: 6%;
+    right: 2%;
+    position: absolute;
+    margin-left: 0;
+    margin-top: -0.9%;
+  }
+  .toggle-btn {
+    font-size: 52px;
+    top: 42%;
+    left: 20px;
+    display: block;
+  }
+}

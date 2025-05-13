@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 2rem; /* Note: gap now also works with flex in modern browsers */
+  gap: 1rem; /* Note: gap now also works with flex in modern browsers */
   margin-bottom: 1rem
 }
 
@@ -27,7 +27,7 @@
 .category.active {
   background-color: white;
 }
-
+/* Base styles for the video list and cards */
 .videoList {
   display: flex;
   flex-wrap: wrap;
@@ -47,6 +47,8 @@
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
+  /* Default height */
+  height: 350px; /* Adjust as needed */
 }
 
 .videoCard:hover {
@@ -58,10 +60,15 @@
   width: 100%;
   display: block;
   border-radius: 0; /* Image fills top edge — cleaner */
+  height: 200px; /* Optional: Set image height */
+  object-fit: cover; /* Ensures image fills the container properly */
 }
 
 .videoCard .info {
   padding: 0.75rem 1rem;
+  height: 100%; /* Ensures info section takes remaining space */
+  display: flex;
+  flex-direction: column;
 }
 
 .videoCard .info h4 {
@@ -69,9 +76,8 @@
   font-size: 1rem;
   color: #333;
   font-weight: 600;
+  flex-grow: 1; /* Ensures title stretches and maintains spacing */
 }
-
-
 /* Footer Styles */
 .footer {
   text-align: center;
@@ -113,12 +119,13 @@
   .categoryContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    gap: 5px;
+    gap: 4px;
+    
     justify-items: center;
     width: 100%;
     max-width: 100%;
-    margin-top: 65px;
-   
+    margin-top: 75px;
+
   }
 
   .category {
@@ -134,51 +141,49 @@
     cursor: pointer;
   }
   .videoList {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center; /* Center videos horizontally */
-    padding: 1rem;
-    
+    flex-direction: column; /* Stack cards vertically */
+    gap: 1rem; /* Reduce gap between cards */
+    padding: 0.5rem; /* Less padding on mobile */
   }
 
   .videoCard {
-    width: 100%;
-    max-width: 90%; /* Make video cards take 90% of the screen width */
-    margin: 0 auto; /* Center the video cards */
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
-  }
-
-  .videoCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  }
-
-  .videoCard img {
-    width: 100%;
-    display: block;
-    border-radius: 0;
+    max-width: 100%; /* Ensure card takes full width on mobile */
+    width: 100%; /* Make cards flexible */
+    height: 400px; /* Increase height on mobile */
   }
 
   .videoCard .info {
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 0.75rem; /* Reduced padding for smaller screens */
   }
 
   .videoCard .info h4 {
-    margin: 0;
-    font-size: 1rem;
-    color: #333;
-    font-weight: 600;
+    font-size: 0.95rem; /* Smaller font size for h4 */
   }
 }
-
 /* Medium screens: 769px to 1024px (tablets and small laptops) */
 @media (min-width: 769px) and (max-width: 1024px) {
-  
+  .categoryContainer {
+    display: flex;
+    flex-wrap: wrap;         /* Allows wrapping to the next line if needed */
+    justify-content: center; /* Centers the items */
+    gap: 5px;                /* Reduce this number to decrease the gap */
+    width: 50%;
+    max-width: 50%;
+    margin-top: 10px;
+    margin-left: -20px;
+  }
+
+  .category {
+    font-size: 18px;
+    padding: 5px;
+    text-align: center;
+    background-color: #17c5f7;
+    border: 2px solid #17c5f7;
+    border-radius: 1px;
+    color: black;
+    cursor: pointer;
+  }
+
 }
 
 
@@ -189,16 +194,34 @@
   .videoList {
     grid-template-columns: 1fr 1fr 1fr; /* Three columns */
   }
+
+  .categoryContainer {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    justify-content: center;
+    gap: 10px; /* Adjust spacing between items */
+    width: 30%; /* Allow full row */
+    max-width: 100%;
+    margin: 10px auto;
+    transform: translateX(-10%);
+  }
+
   .category {
-    flex: 1;
-    margin-right: 10px;
+    flex: 1 0 auto; /* Prevent shrinking too small */
     font-size: 15px;
+    padding: 5px;
+    margin-right: 0; /* Remove margin-right from all */
   }
 
   .category:last-child {
-    margin-right: 50%;
+    margin-right: 0; /* Ensure no extra margin */
+  }
+
+  .section {
+    margin-top: 90px;
   }
 }
+
 
 /* Extra large screens: 1441px and above (large desktops) */
 @media (min-width: 1441px) {
