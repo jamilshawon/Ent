@@ -36,14 +36,15 @@
   padding: 1rem;
   background-color: #f9f9f9; /* Light background for contrast */
   border-radius: 8px;
+  
 }
 
 .videoCard {
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
@@ -60,23 +61,27 @@
   width: 100%;
   display: block;
   border-radius: 0; /* Image fills top edge — cleaner */
-  height: 200px; /* Optional: Set image height */
+  height: 51vh; /* Optional: Set image height */
   object-fit: cover; /* Ensures image fills the container properly */
+  
 }
 
-.videoCard .info {
+.info {
   padding: 0.75rem 1rem;
-  height: 100%; /* Ensures info section takes remaining space */
   display: flex;
   flex-direction: column;
+  border-top: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2),
+              inset 0 -1px 0 rgba(255, 255, 255, 0.8);
+  background: linear-gradient(to bottom, #eafaff, #ffffff);
 }
 
-.videoCard .info h4 {
+.info h4 {
   margin: 0;
   font-size: 1rem;
   color: #333;
   font-weight: 600;
-  flex-grow: 1; /* Ensures title stretches and maintains spacing */
+  flex-grow: 1; /* Makes the title stretch within the container */
 }
 /* Footer Styles */
 .footer {
@@ -132,32 +137,23 @@
     font-size: 16px;
     padding: 8px;
     width: 100%;
-    /* Adjust as needed */
-    text-align: center;
-    background-color: #17c5f7;
-    border: 2px solid #17c5f7;
-    border-radius: 1px;
-    color: black;
-    cursor: pointer;
+   
   }
   .videoList {
-    flex-direction: column; /* Stack cards vertically */
-    gap: 1rem; /* Reduce gap between cards */
-    padding: 0.5rem; /* Less padding on mobile */
+   margin-top: -30px;
+
   }
 
   .videoCard {
-    max-width: 100%; /* Ensure card takes full width on mobile */
-    width: 100%; /* Make cards flexible */
-    height: 400px; /* Increase height on mobile */
+    max-width: 370px;
+    width: 100%;
+    height: 23vh; 
   }
-
-  .videoCard .info {
-    padding: 0.5rem 0.75rem; /* Reduced padding for smaller screens */
+  .videoCard img {
+    height: 18.5vh;  
   }
-
-  .videoCard .info h4 {
-    font-size: 0.95rem; /* Smaller font size for h4 */
+  .info {
+    padding: 0.5rem 0.75rem;
   }
 }
 /* Medium screens: 769px to 1024px (tablets and small laptops) */
@@ -183,6 +179,23 @@
     color: black;
     cursor: pointer;
   }
+  .videoList {
+     margin-top: -20px;
+     
+
+    }
+
+    .videoCard {
+      max-width: 370px;
+      width: 100%;
+      height: 35vh; 
+    }
+    .videoCard img {
+      height: 28vh;  
+    }
+    .info {
+      padding: 0.5rem 0.75rem;
+    }
 
 }
 
@@ -220,6 +233,17 @@
   .section {
     margin-top: 90px;
   }
+  .videoCard {
+    max-width: 400px;
+    width: 100%;
+    height: 45vh; 
+  }
+  .videoCard img {
+    height: 38vh;  
+  }
+  .info {
+    padding: 0.5rem 0.85rem;
+  }
 }
 
 
@@ -231,6 +255,17 @@
 
   .section {
     margin-top: 120px; /* Extra spacing for large desktops */
+  }
+  .videoCard {
+    max-width: 400px;
+    width: 100%;
+    height: 55vh; 
+  }
+  .videoCard img {
+    height: 48vh;  
+  }
+  .info {
+    padding: 0.5rem 0.85rem;
   }
 }
 

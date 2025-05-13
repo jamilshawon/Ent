@@ -7,7 +7,7 @@ export default function Home() {
   const [activeCategory, setActiveCategory] = useState("Latest");
 
   const videoData: Record<string, string[]> = {
-    Latest: ["Video A", "Video B", "Video C", "Video D", "Video E", "Video F"],
+    Latest: ["Game of Thrones", "Vikings", "Video C", "Video D", "Video E", "Video F"],
     Popular: ["Popular 1", "Popular 2", "Popular 3", "Popular 4"],
     Upcoming: ["Upcoming 1", "Upcoming 2", "Upcoming 3"],
     Engaged: ["Engaged 1", "Engaged 2", "Engaged 3", "Engaged 4", "Engaged 5"],
@@ -36,16 +36,15 @@ export default function Home() {
       <div className={styles.videoList}>
         {videoData[activeCategory].map((title, index) => (
           <div key={index} className={styles.videoCard}>
-            <img
-              src={`https://via.placeholder.com/300x150?text=${encodeURIComponent(
-                title
-              )}`}
-              alt={`Video Thumbnail ${index + 1}`}
-            />
-            <div className="info">
-              <h4>{title}</h4>
-            </div>
-          </div>
+  <img
+    src={`https://via.placeholder.com/300x150?text=${encodeURIComponent(title)}`}
+    alt={`Video Thumbnail ${index + 1}`}
+  />
+  <div className={styles.info}>
+    <h4>{title}</h4>
+  </div>
+</div>
+
         ))}
       </div>
 
