@@ -1,16 +1,39 @@
-// pages/index.tsx
 import { useState } from "react";
 import Layout from "../components/Layout";
 import styles from "../styles/Home.module.css";
+import Link from "next/link";
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("Latest");
 
-  const videoData: Record<string, string[]> = {
-    Latest: ["Game of Thrones", "Vikings", "Video C", "Video D", "Video E", "Video F"],
-    Popular: ["Popular 1", "Popular 2", "Popular 3", "Popular 4"],
-    Upcoming: ["Upcoming 1", "Upcoming 2", "Upcoming 3"],
-    Engaged: ["Engaged 1", "Engaged 2", "Engaged 3", "Engaged 4", "Engaged 5"],
+  // Updated videoData with thumbnail paths
+  const videoData: Record<string, { title: string, thumbnail: string }[]> = {
+    Latest: [
+      { title: "Rockstar(2011)", thumbnail: "/thumbnails/rockstar-2011.jpg" },
+      { title: "Vikings", thumbnail: "/thumbnails/vikings.jpg" },
+      { title: "Video C", thumbnail: "/thumbnails/video-c.jpg" },
+      { title: "Video D", thumbnail: "/thumbnails/video-d.jpg" },
+      { title: "Video E", thumbnail: "/thumbnails/video-e.jpg" },
+      { title: "Video F", thumbnail: "/thumbnails/video-f.jpg" },
+    ],
+    Popular: [
+      { title: "Popular 1", thumbnail: "/thumbnails/popular-1.jpg" },
+      { title: "Popular 2", thumbnail: "/thumbnails/popular-2.jpg" },
+      { title: "Popular 3", thumbnail: "/thumbnails/popular-3.jpg" },
+      { title: "Popular 4", thumbnail: "/thumbnails/popular-4.jpg" },
+    ],
+    Upcoming: [
+      { title: "Upcoming 1", thumbnail: "/thumbnails/upcoming-1.jpg" },
+      { title: "Upcoming 2", thumbnail: "/thumbnails/upcoming-2.jpg" },
+      { title: "Upcoming 3", thumbnail: "/thumbnails/upcoming-3.jpg" },
+    ],
+    Engaged: [
+      { title: "Engaged 1", thumbnail: "/thumbnails/engaged-1.jpg" },
+      { title: "Engaged 2", thumbnail: "/thumbnails/engaged-2.jpg" },
+      { title: "Engaged 3", thumbnail: "/thumbnails/engaged-3.jpg" },
+      { title: "Engaged 4", thumbnail: "/thumbnails/engaged-4.jpg" },
+      { title: "Engaged 5", thumbnail: "/thumbnails/engaged-5.jpg" },
+    ],
   };
 
   return (
@@ -34,23 +57,30 @@ export default function Home() {
 
       {/* Video List */}
       <div className={styles.videoList}>
-        {videoData[activeCategory].map((title, index) => (
-          <div key={index} className={styles.videoCard}>
-  <img
-    src={`https://via.placeholder.com/300x150?text=${encodeURIComponent(title)}`}
-    alt={`Video Thumbnail ${index + 1}`}
-  />
-  <div className={styles.info}>
-    <h4>{title}</h4>
-  </div>
-</div>
-
+        {videoData[activeCategory].map((video, index) => (
+          <Link
+            key={index}
+            href={`/video/${encodeURIComponent(video.title)}`}
+            className={styles.videoCard}
+          >
+            <img
+              src={video.thumbnail} // Use the actual thumbnail path
+              alt={`Thumbnail for ${video.title}`}
+              className={styles.thumbnail}
+            />
+            <div className={styles.info}>
+              <h4>{video.title}</h4>
+            </div>
+          </Link>
         ))}
       </div>
 
       {/* Footer */}
       <footer className={styles.footer}>
-        <div>Footer Content</div>
+        <div className={styles.footerContent}>
+          <div>Vid-Lab</div>
+          <div className={styles.version}>v1.1</div>
+        </div>
       </footer>
     </Layout>
   );
