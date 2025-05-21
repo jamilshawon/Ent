@@ -33,14 +33,15 @@ export default function Models() {
 
       <style jsx>{`
         .models-container {
-          padding: 20px;
+          padding: 10px;
           text-align: center;
+          background: linear-gradient(135deg, #3498db, #9b59b6);
         }
 
         .models-title {
           font-size: 2rem;
           margin-bottom: 30px;
-          color: #333;
+          color: black;
         }
 
         .models-list {
@@ -50,7 +51,7 @@ export default function Models() {
         }
 
         .model-card {
-          margin: 20px;
+          margin: 10px;
           width: 250px;
           text-align: center;
           background-color: #fff;
@@ -66,7 +67,7 @@ export default function Models() {
 
         .model-photo {
           width: 100%;
-          height: 200px;
+          height: 350px;
           background-color: #f0f0f0;
           display: flex;
           justify-content: center;
@@ -94,6 +95,16 @@ export default function Models() {
         .model-card a:hover h3 {
           color: #3498db;
         }
+         @media (max-width: 768px) {
+           .model-card{
+             width: 90%;
+           }
+           .models-container{
+             margin-top: 95px;
+           }
+            
+           }
+         }
       `}</style>
     </Layout>
   );

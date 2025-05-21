@@ -1,188 +1,160 @@
+// pages/actress/[name].tsx
+
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import { videoData } from "../video/videoData";
+import { modelsData } from "../data/models";
 
-export default function ActressProfile() {
+
+export default function ActressPage() {
   const router = useRouter();
   const { name } = router.query;
-  const actressName = name ? name.replace(/-/g, " ") : "";
 
-  const filteredVideos = Object.values(videoData).filter(
-    (video) =>
-      video.actress &&
-      video.actress.toLowerCase() === actressName.toLowerCase()
+  if (!name || typeof name !== "string") return null;
+
+  const actress = modelsData[name];
+  if (!actress) {
+    return (
+      <Layout>
+        <div className="actress-container">
+          <h1>Actress not found</h1>
+        </div>
+      </Layout>
+    );
+  }
+
+  const relatedVideos = Object.entries(videoData).filter(
+    ([_, video]) => video.actress === actress.name
   );
 
   return (
     <Layout>
-      <div className="profile-container">
-        <div className="profile-header">
-          <div className="profile-box">
-            <div className="profile-photo">
-              <img
-                src={`/actresses/${actressName
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")}.jpg`}
-                alt={actressName}
-                className="photo"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = "/images/default-avatar.jpg";
-                }}
-              />
-            </div>
-
-            <div className="profile-info">
-              <h1>{actressName}</h1>
-              <p className="bio">
-                Here is a brief bio about {actressName}. You can add more
-                details or a description about the actress here.
-              </p>
-            </div>
-          </div>
+      <div className="actress-container">
+        <div className="profile">
+          <img src={actress.image} alt={actress.name} className="profile-image" />
+          <h1>{actress.name}</h1>
+          <p className="bio">{actress.bio}</p>
         </div>
 
-        <div className="videos-section">
-          <h2>Related Videos</h2>
-          {filteredVideos.length > 0 ? (
-            <div className="video-list">
-              {filteredVideos.map((video, index) => (
-                <div key={index} className="video-item">
-                  <h3>{video.description}</h3>
+        <h2>Related Videos</h2>
+        <div className="video-list">
+          {relatedVideos.length > 0 ? (
+            relatedVideos.map(([title, video], index) => (
+              <div key={index} className="video-item">
+                <h3>{title}</h3>
+                <div className="video-frame">
                   <iframe
                     src={video.src}
-                    title={video.description}
+                    title={title}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />
                 </div>
-              ))}
-            </div>
+                <p className="description">{video.description}</p>
+              </div>
+            ))
           ) : (
-            <p>No videos found for this actress.</p>
+            <p>No related videos available.</p>
           )}
         </div>
       </div>
 
       <style jsx>{`
-        .profile-container {
-          padding: 40px 20px;
-          background-color: #f7f7f7;
-          color: #333;
-          margin-top: 100px;
+        .actress-container {
+          padding: 30px 20px;
+          text-align: center;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #3498db, #9b59b6);
+          color: #fff;
         }
 
-        .profile-header {
+        .profile {
           margin-bottom: 40px;
-          display: flex;
-          justify-content: center;
         }
 
-        .profile-box {
-          display: flex;
-          flex-direction: row;
-          justify-content: flex-start;
-          align-items: center;
-          width: 100%;
-          background-color: #fff;
-          border-radius: 10px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-          padding: 20px;
-          gap: 20px;
-        }
-
-        .profile-photo {
+        .profile-image {
           width: 300px;
-          height: 350px;
-          overflow: hidden;
+          height: auto;
           border-radius: 10px;
-          flex-shrink: 0;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .profile-photo .photo {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+        h1 {
+          font-size: 2.2rem;
+          margin: 15px 0 10px;
+          color: black;
         }
 
-        .profile-info {
-          flex-grow: 1;
+        .bio {
+          font-size: 1rem;
+          color: black;
+          max-width: 600px;
+          margin: 0 auto;
         }
 
-        .profile-info h1 {
-          font-size: 2.5rem;
-          margin-bottom: 10px;
-        }
-
-        .profile-info .bio {
-          font-size: 1.2rem;
-          color: #555;
-        }
-
-        .videos-section h2 {
-          font-size: 2rem;
-          margin-bottom: 20px;
-          color: #2c3e50;
+        h2 {
+          font-size: 1.5rem;
+          margin: 30px 0 20px;
+          color: black;
         }
 
         .video-list {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-          gap: 20px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
         }
 
         .video-item {
-          background-color: #fff;
-          border-radius: 10px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          margin: 20px;
+          width: 300px;
+          background: #fdfdfd;
+          border-radius: 8px;
           padding: 15px;
-          text-align: center;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          transition: transform 0.2s ease;
         }
 
-        .video-item iframe {
+        .video-item:hover {
+          transform: translateY(-5px);
+        }
+
+        .video-frame {
           width: 100%;
-          height: 200px;
-          border-radius: 10px;
+          padding-bottom: 56.25%;
+          position: relative;
+          border-radius: 6px;
+          overflow: hidden;
+        }
+
+        .video-frame iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: none;
         }
 
         .video-item h3 {
-          font-size: 1.2rem;
           margin-top: 10px;
-          color: #2c3e50;
+          font-size: 1.1rem;
+          color: #2980b9;
         }
 
-        /* 🔽 Responsive styles for smaller screens */
+        .description {
+          font-size: 0.95rem;
+          color: #666;
+          margin-top: 8px;
+        }
+
         @media (max-width: 768px) {
-          .profile-container{
-            margin-top: 135px;
+          .video-item {
+            width: 90%;
+            
           }
-          .profile-box {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-          }
-
-          .profile-photo {
-            width: 100%;
-            height: auto;
-            max-width: 300px;
-          }
-
-          .profile-info h1 {
-            font-size: 2rem;
-          }
-
-          .profile-info .bio {
-            font-size: 1rem;
-          }
-
-          .videos-section h2 {
-            font-size: 1.5rem;
-          }
-
-          .video-list {
-            grid-template-columns: 1fr;
+          .actress-container{
+            margin-top: 115px;
           }
         }
       `}</style>
