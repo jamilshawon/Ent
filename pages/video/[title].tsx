@@ -2,7 +2,9 @@
 
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
-import { videoData } from "./videoData";
+// ✅ New (correct)
+import { videoData } from "../../data/videoData";
+
 
 export default function VideoPage() {
   const router = useRouter();

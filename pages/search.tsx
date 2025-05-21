@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import Layout from "../components/Layout";
-import { videoData } from "./video/videoData";
+// ✅ New (correct)
+import { videoData } from "../data/videoData";
+
 
 export default function SearchPage() {
   const router = useRouter();

@@ -2,8 +2,10 @@
 
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
-import { videoData } from "../video/videoData";
-import { modelsData } from "../data/models";
+import { modelsData } from "../../data/models"; // ✅ correct
+
+import { videoData } from "../../data/videoData";
+
 
 
 export default function ActressPage() {
@@ -12,7 +14,9 @@ export default function ActressPage() {
 
   if (!name || typeof name !== "string") return null;
 
-  const actress = modelsData[name];
+  const actress = modelsData[name]; // ✅ uses the correct object
+
+
   if (!actress) {
     return (
       <Layout>
