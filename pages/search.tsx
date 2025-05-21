@@ -14,7 +14,7 @@ export default function SearchPage() {
   return (
     <Layout>
       <div className="container">
-        <h1 className="search-heading">Search Results for "{actress}"</h1>
+        <h1 className="search-heading">Search Results for &quot;{actress}&quot;</h1>
 
         {filteredVideos.length > 0 ? (
           filteredVideos.map(([title, video]) => (
@@ -38,7 +38,7 @@ export default function SearchPage() {
           ))
         ) : (
           <p style={{ textAlign: "center", padding: "40px", fontSize: "1.2rem", color: "#ecf0f1" }}>
-            No videos found for "{actress}"
+            No videos found for &quot;{actress}&quot;
           </p>
         )}
       </div>
@@ -51,21 +51,21 @@ export default function SearchPage() {
           color: #fff;
           min-height: 100vh;
         }
-        
 
-          .search-heading {
-    font-size: 2.2rem;
-    margin: 20px 0 10px 0; /* smaller top & bottom space */
-    color: #ffffff;
-    text-align: center;
-  }
+        .search-heading {
+          font-size: 2.2rem;
+          margin: 20px 0 10px 0;
+          color: #ffffff;
+          text-align: center;
+        }
 
-  .title {
-    font-size: 1.5rem;
-    margin: 10px 0 5px 0; /* less space above & below */
-    color: #01f4e0;
-    text-align: left;
-  }
+        .title {
+          font-size: 1.5rem;
+          margin: 10px 0 5px 0;
+          color: #01f4e0;
+          text-align: left;
+        }
+
         .video-wrapper {
           position: relative;
           width: 100%;
@@ -110,27 +110,26 @@ export default function SearchPage() {
           color: #3498db;
         }
 
-       @media (max-width: 768px) {
-         
-  .title {
-    font-size: 1.2rem;     /* slightly larger for readability */
-    margin-top: 10px;      /* reduced from 110px to 20px */
-    margin-bottom: 20px;   /* optional: to reduce space before video */
-  }
-         .search-heading {
-        margin-top: 95px;
+        @media (max-width: 768px) {
+          .title {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            margin-bottom: 20px;
+          }
+
+          .search-heading {
+            margin-top: 95px;
             font-size: 1.4rem;
-         }
+          }
 
-  .video-details {
-    padding: 15px;
-  }
+          .video-details {
+            padding: 15px;
+          }
 
-  .video-details p {
-    font-size: 1rem;
-  }
-}
-
+          .video-details p {
+            font-size: 1rem;
+          }
+        }
       `}</style>
     </Layout>
   );
