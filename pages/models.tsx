@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Layout from "../components/Layout";
-import { videoData } from "./video/videoData";
+
 
 
 // Define an array with actress information
