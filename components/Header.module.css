@@ -79,7 +79,7 @@
 
 .close-btn {
   position: absolute;
-  top: 15px;
+  top: 1px;
   right: 15px;
   font-size: 30px;
   color: white;
@@ -126,12 +126,17 @@
   }
 
   .sidebar {
-    width: 200px;
+    width: 250px;
     
   }
   .logo {
-  margin-left: 18%;
-    font-size: 34px;
+  margin-left: 30%;
+    margin-top: 5px;
+    font-size: 26px;
+    white-space: nowrap; 
+  }
+  .navLinks {
+    margin-top:25px ;
   }
 }
 
