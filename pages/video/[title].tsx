@@ -66,7 +66,7 @@ export default function VideoPage() {
               overflow: hidden;
               border: 2px solid #01f4e0;
               border-radius: 10px;
-              margin: 30px 0;
+              margin: 20px 0;
             }
 
             .video-wrapper iframe {
@@ -94,6 +94,12 @@ export default function VideoPage() {
 
             .video-details strong {
               color: #3498db;
+            }
+            @media (max-width: 768px){
+              .title{
+                font-size: 1.7rem;
+                margin-top: 85px;
+              }
             }
           `}</style>
         </div>

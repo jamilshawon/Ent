@@ -10,33 +10,75 @@ export const videoData: Record<
     actress?: string; // ✅ Added actress field
   }
 > = {
-  "Rockstar(2011)": {
+  "Lesbian Triangles": {
     src: "https://streamtape.com/e/28G23JD7lYczXq",
-    description: "A musical journey of a troubled artist finding meaning through music.",
+    description: "Lesbian Fun",
     date: "2011-11-11",
-    info: "Starring Ranbir Kapoor. Directed by Imtiaz Ali.",
+    info: "Hell Convent",
     actress: "Cindy Craves", // ✅ Added
   },
-  "Vikings": {
-    src: "https://www.youtube.com/embed/9GgxinPwAGc",
-    description: "A legendary Norse saga brought to the screen.",
+  "Mother Superior": {
+    src: "https://streamtape.com/e/27J81pgOYqHZ8xp/",
+    description: "Lesbian Nuns Having Fun",
     date: "2013-03-03",
-    info: "Starring Travis Fimmel as Ragnar Lothbrok.",
+    info: "Nuns",
     actress: "Magdelene St Michaels", // ✅ Example added
   },
-  "Video C": {
-    src: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    description: "A classic viral internet music video.",
+  "Mother Superior 2": {
+    src: "https://streamtape.com/e/OdO7RL9vRKhZ3ob/",
+    description: "Lesbian Fun",
     date: "1987-07-27",
-    info: "Rick Astley's famous hit 'Never Gonna Give You Up'.",
-    actress: "Raylene", // ✅ Example added
+    info: "Nuns",
+    actress: "Magdelene St Michaels", // ✅ Example added
   },
-  "Video D": {
-    src: "https://streamtape.com/e/RL3MkKbp4jHd1q2/",
-    description: "Ed Sheeran's romantic hit single.",
+  "Mother Superior 3": {
+    src: "https://streamtape.com/e/G6bY3Lrw1eI1GML/",
+    description: "Lesbian Fun",
     date: "2017-01-06",
-    info: "From the album 'Divide'.",
-    actress: "Tanya Tate", // ✅ Example added
+    info: "Nuns",
+    actress: "Magdelene St Michaels", // ✅ Example added
+  },
+  "Under the Veil": {
+    src: "https://streamtape.com/e/k9yOmPaqXqUP3G/",
+    description: "Lesbian Fun",
+    date: "2017-01-06",
+    info: "Nuns",
+    actress: "Magdelene St Michaels", // ✅ Example added
+  },
+  "Confessions of a Sinful Nun 2": {
+    src: "https://streamtape.com/e/ybZ7OzL8MPf1Qp1/",
+    description: "Lesbian Fun",
+    date: "2017-01-06",
+    info: "Nuns",
+    actress: "Magdelene St Michaels", // ✅ Example added
+  },
+  "A Fantasy": {
+    src: "https://streamtape.com/e/lGezJqgBg2uOw0/",
+    description: "Lesbian Fun",
+    date: "2017-01-06",
+    info: "Nuns",
+    actress: "Cindy Craves", // ✅ Example added
+  },
+  "Black and Tan": {
+    src: "https://streamtape.com/e/79rGqe0GRVuADv9/",
+    description: "Lesbian Fun",
+    date: "2017-01-06",
+    info: "Nuns",
+    actress: "Cindy Craves", // ✅ Example added
+  },
+  "Lesbian Seductions #32": {
+    src: "https://streamtape.com/e/4y0MBo4G3eiJXj/",
+    description: "Lesbian Fun",
+    date: "2017-01-06",
+    info: "Nuns",
+    actress: "Cindy Craves", // ✅ Example added
+  },
+  "Women Seeking Women 125": {
+    src: "https://streamtape.com/e/jOBpDZBlzgSzAbr/",
+    description: "Lesbian Fun",
+    date: "2017-01-06",
+    info: "Nuns",
+    actress: "Cindy Craves", // ✅ Example added
   },
   // Add more videos here...
 };

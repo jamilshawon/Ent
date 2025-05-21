@@ -1,22 +1,24 @@
 import { useRouter } from "next/router";
 import Layout from "../components/Layout";
-// ✅ New (correct)
 import { videoData } from "../data/videoData";
-
 
 export default function SearchPage() {
   const router = useRouter();
-  const { actress } = router.query;
-  const searchTerm = (actress as string)?.toLowerCase() || "";
+  const { q } = router.query;
+  const searchTerm = (q as string)?.toLowerCase() || "";
 
   const filteredVideos = Object.entries(videoData).filter(
-    ([, data]) => data.actress?.toLowerCase().includes(searchTerm)
+    ([title, data]) =>
+      title.toLowerCase().includes(searchTerm) ||
+      data.actress?.toLowerCase().includes(searchTerm)
   );
 
   return (
     <Layout>
       <div className="container">
-        <h1 className="search-heading">Search Results for &quot;{actress}&quot;</h1>
+        <h1 className="search-heading">
+          Search Results for &quot;{q}&quot;
+        </h1>
 
         {filteredVideos.length > 0 ? (
           filteredVideos.map(([title, video]) => (
@@ -40,7 +42,7 @@ export default function SearchPage() {
           ))
         ) : (
           <p style={{ textAlign: "center", padding: "40px", fontSize: "1.2rem", color: "#ecf0f1" }}>
-            No videos found for &quot;{actress}&quot;
+            No videos found for &quot;{q}&quot;
           </p>
         )}
       </div>

@@ -83,7 +83,7 @@ export default function Header() {
       <input
         type="text"
         className={styles.search}
-        placeholder="Search by actress..."
+        placeholder="Search here..."
         value={searchTerm}
         onChange={handleSearch}  // Updates searchTerm state as user types
         onKeyDown={handleKeyPress}  // Trigger search on Enter key press

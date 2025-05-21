@@ -9,12 +9,17 @@ export default function Home() {
   // Updated videoData with thumbnail paths
   const videoData: Record<string, { title: string, thumbnail: string }[]> = {
     Latest: [
-      { title: "Rockstar(2011)", thumbnail: "/thumbnails/rockstar-2011.jpg" },
-      { title: "Vikings", thumbnail: "/thumbnails/vikings.jpg" },
-      { title: "Video C", thumbnail: "/thumbnails/video-c.jpg" },
-      { title: "Video D", thumbnail: "/thumbnails/video-d.jpg" },
-      { title: "Video E", thumbnail: "/thumbnails/video-e.jpg" },
-      { title: "Video F", thumbnail: "/thumbnails/video-f.jpg" },
+      { title: "Lesbian Triangles", thumbnail: "/actresses/Lesbian-triangles25.jpg" },
+      { title: "Mother Superior", thumbnail: "/actresses/Mother-Superior.jpg" },
+      { title: "Mother Superior 2", thumbnail: "/actresses/Mother-superior2.jpg" },
+      { title: "Mother Superior 3", thumbnail: "/actresses/Ms3.jpg" },
+      { title: "Under the Veil", thumbnail: "/actresses/Utv.jpg" },
+      { title: "Confessions of a Sinful Nun ", thumbnail: "/actresses/Csn.jpg" },
+      { title: "Confessions of a Sinful Nun 2", thumbnail: "/actresses/Csn2.jpg" },
+      { title: "A Fantasy", thumbnail: "/actresses/AFantasy.jpg" },
+       { title: "Black and Tan", thumbnail: "/thumbnails/Bat.jpg" },
+       { title: "Lesbian Seductions #32", thumbnail: "/thumbnails/Lsd32.jpg" },
+      { title: "Women Seeking Women 125", thumbnail: "/thumbnails/Wsw125.jpg" },
     ],
     Popular: [
       { title: "Popular 1", thumbnail: "/thumbnails/popular-1.jpg" },

@@ -36,7 +36,6 @@
   padding: 1rem;
   background-color: #f9f9f9; /* Light background for contrast */
   border-radius: 8px;
-  
 }
 
 .videoCard {
@@ -48,8 +47,6 @@
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
-  /* Default height */
-  height: 350px; /* Adjust as needed */
 }
 
 .videoCard:hover {
@@ -63,7 +60,7 @@
   border-radius: 0; /* Image fills top edge — cleaner */
   height: 51vh; /* Optional: Set image height */
   object-fit: cover; /* Ensures image fills the container properly */
-  
+
 }
 
 .info {
@@ -90,7 +87,7 @@
   background-color: black;
   color: white;
   box-shadow: inset 0 0 0 1px #01f4e0; /* Inner border effect */
-  
+
   bottom: 0;
   left: 0;
   width: 100%;
@@ -136,7 +133,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 columns */
     gap: 4px;
-    
+
     justify-items: center;
     width: 100%;
     max-width: 100%;
@@ -148,7 +145,7 @@
     font-size: 16px;
     padding: 8px;
     width: 100%;
-   
+
   }
   .videoList {
    margin-top: -30px;
@@ -158,10 +155,10 @@
   .videoCard {
     max-width: 370px;
     width: 100%;
-    height: 23vh; 
+    height: 45vh; 
   }
   .videoCard img {
-    height: 18.5vh;  
+    height: 40vh;  
   }
   .info {
     padding: 0.5rem 0.75rem;
@@ -192,17 +189,17 @@
   }
   .videoList {
      margin-top: -20px;
-     
+
 
     }
 
     .videoCard {
       max-width: 370px;
       width: 100%;
-      height: 35vh; 
+      height: 70vh; 
     }
     .videoCard img {
-      height: 28vh;  
+      height: 64vh;  
     }
     .info {
       padding: 0.5rem 0.75rem;
