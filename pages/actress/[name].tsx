@@ -150,7 +150,7 @@ export default function ActressPage() {
 
         .stats {
           display: flex;
-          gap: 20px;
+          gap: 10px;
           margin-top: 15px;
           font-size: 0.95rem;
           color: #bbb;
@@ -158,35 +158,38 @@ export default function ActressPage() {
         }
 
         .videos-section {
-          padding: 30px;
+          padding: 20px 10px; 
           background-color: #000;
         }
 
         .videos-section h2 {
           font-size: 1.6rem;
           color: #f5f5f5;
-          margin-bottom: 10px;
+          margin-bottom: 20px;
         }
 
         .video-list {
           display: flex;
           flex-wrap: wrap;
-          gap: 10px;
+          gap: 20px;
         }
 
         .video-card-wrapper {
           background: rgba(255, 255, 255, 0.05);
           border-radius: 10px;
-          padding: 10px;
+          padding: 2px;
           backdrop-filter: blur(5px);
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
           transition: transform 0.2s ease;
           width: 300px;
         }
 
-        .video-card-wrapper:hover {
-          transform: scale(1.02);
-        }
+       .video-card-wrapper:hover {
+         box-shadow:
+         inset 0 10px 8px rgba(255, 255, 255, 0.05),
+         inset 0 -8px 6px rgb(15, 176, 230, 0.8);
+}
+
 
         .no-videos {
           color: #aaa;
@@ -207,9 +210,7 @@ export default function ActressPage() {
           .profile-info {
             padding-top: 5px;
           }
-          .video-card-wrapper{
-            width: 100%;
-          }
+          .video-card-wrapper
 
           .stats {
             justify-content: center;
@@ -219,6 +220,7 @@ export default function ActressPage() {
           .video-list {
             flex-direction: column;
             align-items: center;
+            width: 100%;
           }
         }
       `}</style>

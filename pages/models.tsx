@@ -28,72 +28,89 @@ export default function Models() {
       </div>
 
       <style jsx>{`
-        .models-container {
-          padding: 50px 20px;
-          background-color: #111;
-          min-height: 100vh;
-          color: #f5f5f5;
-          font-family: 'Segoe UI', sans-serif;
-        }
+         .models-container {
+    padding: 50px 20px;
+    background-color: #000; /* match video page black bg */
+    min-height: 100vh;
+    color: #f5f5f5;
+    font-family: 'Segoe UI', sans-serif;
+  }
 
-        .models-title {
-          font-size: 2.5rem;
-          margin-bottom: 40px;
-          color: #fff;
-          text-align: center;
-        }
+  .models-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
+  }
 
-        .models-list {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 30px;
-        }
+  .models-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+  }
 
-        .model-card {
-          background-color: #222;
-          border-radius: 12px;
-          overflow: hidden;
-          width: 260px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+  .model-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 4px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    width: 300px;
+  }
 
-        .model-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
-        }
+  .model-card:hover {
+    box-shadow:
+      inset 0 10px 8px rgba(255, 255, 255, 0.05),
+      inset 0 -8px 6px rgba(15, 176, 230, 0.8);
+    transform: translateY(-5px);
+  }
 
-        .model-photo {
-          width: 100%;
-          height: 360px;
-          background-color: #333;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
+  .model-photo {
+    width: 100%;
+    height: 480px; /* Reduced height for consistency with video cards */
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    overflow: hidden;
+  }
 
-        .model-photo img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
+  .model-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-        .model-card h3 {
-          font-size: 1.2rem;
-          margin: 16px;
-          color: #f5f5f5;
-          text-align: center;
-        }
+  .model-card h3 {
+    font-size: 1.2rem;
+    margin: 12px;
+    color: #f5f5f5;
+    text-align: center;
+  }
 
-        .model-card a {
-          text-decoration: none;
-          color: inherit;
-        }
+  .model-card a {
+    text-decoration: none;
+    color: inherit;
+  }
 
-        .model-card a:hover h3 {
-          color: #61dafb;
-        }
+  .model-card a:hover h3 {
+    color: #3498db; /* blue accent similar to video page */
+  }
+
+  @media (max-width: 768px) {
+    .model-card {
+      width: 90%;
+    }
+
+    .models-container {
+      padding-top: 100px;
+    }
+  }
 
         @media (max-width: 768px) {
           .model-card {
