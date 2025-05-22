@@ -1,9 +1,6 @@
 import Link from "next/link";
 import Layout from "../components/Layout";
 
-
-
-// Define an array with actress information
 const actresses = [
   { name: "Cindy Craves", image: "/actresses/cindy-craves.jpg" },
   { name: "Magdelene St Michaels", image: "/actresses/magdelene-st-michaels.jpg" },
@@ -25,7 +22,6 @@ export default function Models() {
                 </div>
                 <h3>{actress.name}</h3>
               </Link>
-
             </div>
           ))}
         </div>
@@ -33,46 +29,48 @@ export default function Models() {
 
       <style jsx>{`
         .models-container {
-          padding: 10px;
-          text-align: center;
-          background: linear-gradient(135deg, #3498db, #9b59b6);
+          padding: 50px 20px;
+          background-color: #111;
+          min-height: 100vh;
+          color: #f5f5f5;
+          font-family: 'Segoe UI', sans-serif;
         }
 
         .models-title {
-          font-size: 2rem;
-          margin-bottom: 30px;
-          color: black;
+          font-size: 2.5rem;
+          margin-bottom: 40px;
+          color: #fff;
+          text-align: center;
         }
 
         .models-list {
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
+          gap: 30px;
         }
 
         .model-card {
-          margin: 10px;
-          width: 250px;
-          text-align: center;
-          background-color: #fff;
-          border-radius: 10px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          background-color: #222;
+          border-radius: 12px;
           overflow: hidden;
-          transition: transform 0.3s ease;
+          width: 260px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .model-card:hover {
-          transform: translateY(-10px);
+          transform: translateY(-8px);
+          box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
         }
 
         .model-photo {
           width: 100%;
-          height: 350px;
-          background-color: #f0f0f0;
+          height: 360px;
+          background-color: #333;
           display: flex;
-          justify-content: center;
           align-items: center;
-          overflow: hidden;
+          justify-content: center;
         }
 
         .model-photo img {
@@ -83,8 +81,9 @@ export default function Models() {
 
         .model-card h3 {
           font-size: 1.2rem;
-          margin: 15px;
-          color: #333;
+          margin: 16px;
+          color: #f5f5f5;
+          text-align: center;
         }
 
         .model-card a {
@@ -93,18 +92,18 @@ export default function Models() {
         }
 
         .model-card a:hover h3 {
-          color: #3498db;
+          color: #61dafb;
         }
-         @media (max-width: 768px) {
-           .model-card{
-             width: 90%;
-           }
-           .models-container{
-             margin-top: 95px;
-           }
-            
-           }
-         }
+
+        @media (max-width: 768px) {
+          .model-card {
+            width: 90%;
+          }
+
+          .models-container {
+            padding-top: 100px;
+          }
+        }
       `}</style>
     </Layout>
   );
