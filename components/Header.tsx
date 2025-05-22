@@ -19,10 +19,11 @@ export default function Header() {
 
   const handleKeyPress = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter' && searchTerm.trim()) {
-      // Redirect to search results page with actress name as query parameter
-      router.push(`/search?actress=${searchTerm}`);
+      // Redirect to search results page with searchTerm as query parameter
+      router.push(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
     }
   };
+
 
   // Responsive logic for top/padding based on screen and route
   useEffect(() => {

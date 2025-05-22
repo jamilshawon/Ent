@@ -9,7 +9,14 @@ type VideoProps = {
   actress?: string;
 };
 
-export default function VideoCard({ title, src, description, date, info, actress }: VideoProps) {
+export default function VideoCard({
+  title,
+  src,
+  description,
+  date,
+  info,
+  actress,
+}: VideoProps) {
   return (
     <div className="video-card">
       <h2>{title}</h2>
