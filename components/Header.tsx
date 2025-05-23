@@ -6,23 +6,27 @@ import Link from 'next/link';
 export default function Header() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarStyle, setSidebarStyle] = useState({});
+  const [genresOpen, setGenresOpen] = useState(false); // dropdown state
   const router = useRouter();
 
   const toggleSidebar = () => {
     setSidebarOpen((prev) => !prev);
   };
 
-  // Responsive logic for top/padding based on screen and route
+  const toggleGenres = () => {
+    setGenresOpen((prev) => !prev);
+  };
+
   useEffect(() => {
     const updateSidebarStyle = () => {
       const width = window.innerWidth;
-      const isAuthPage = ["/register", "/signin","/index"].includes(router.pathname);
+      const isAuthPage = ["/register", "/signin", "/index"].includes(router.pathname);
 
       let top = "0px";
       let paddingTop = "50px";
 
       if (width <= 480) {
-        top = isAuthPage ? "80px" : "60px";
+        top = isAuthPage ? "80px" : "72px";
         paddingTop = isAuthPage ? "10px" : "30px";
       } else if (width <= 768) {
         top = isAuthPage ? "80px" : "60px";
@@ -40,7 +44,6 @@ export default function Header() {
     return () => window.removeEventListener('resize', updateSidebarStyle);
   }, [router.pathname]);
 
-  // Close sidebar when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (!(event.target instanceof Element)) return;
@@ -51,6 +54,7 @@ export default function Header() {
         !event.target.closest(`.${styles["toggle-btn"]}`)
       ) {
         setSidebarOpen(false);
+        setGenresOpen(false); // Close dropdown
       }
     };
 
@@ -58,12 +62,28 @@ export default function Header() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, [sidebarOpen]);
 
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setSidebarOpen(false);
+      setGenresOpen(false);
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router]);
+
   return (
     <header className={styles.header}>
       <Link href="/signin">
         <button className={styles.signIn}>Sign In</button>
       </Link>
-      <div className={styles.logo}>VID-LAB</div>
+
+      <Link href="/" legacyBehavior>
+        <a className={styles.logo}>VID-LAB</a>
+      </Link>
+
       <input
         type="text"
         className={styles.search}
@@ -81,11 +101,33 @@ export default function Header() {
         <span className={styles["close-btn"]} onClick={toggleSidebar}>
           &times;
         </span>
-        <div className={styles.navLinks}>
+        <div
+          className={styles.navLinks}
+          onClick={(e) => e.stopPropagation()}
+        >
           <Link href="/">Home</Link>
-          <Link href="#">Popular</Link>
-          <Link href="#">Upcoming</Link>
-          <Link href="#">Latest</Link>
+          <Link href="/movies">Movies</Link>
+
+          <Link href="#">TVShows</Link>
+
+          <div className={styles.dropdown}>
+            <span className={styles.dropdownToggle} onClick={toggleGenres}>
+              Genres ▾
+            </span>
+            {genresOpen && (
+              <div className={styles.dropdownMenu}>
+                <Link href="/genres/bollywood">Bollywood</Link>
+                <Link href="/genres/hollywood">Hollywood</Link>
+                <Link href="/genres/bengali">Bengali</Link>
+                <Link href="/genres/thriller">Thriller</Link>
+                <Link href="/genres/horror">Horror</Link>
+                 <Link href="/genres/mysterious">Mysterious</Link>
+              </div>
+            )}
+          </div>
+
+          <Link href="#">A-Z</Link>
+          <Link href="#">4k</Link>
         </div>
       </div>
     </header>

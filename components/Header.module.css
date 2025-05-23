@@ -71,7 +71,33 @@
   z-index: 999;
   border: 2px solid #01f4e0;
   border-radius: 2px;
+  overflow-y: auto;
+
+  /* Smooth scrolling on mobile */
+  -webkit-overflow-scrolling: touch;
 }
+
+/* WebKit custom scrollbar */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #01f4e0;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+/* Firefox */
+.sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: #01f4e0 transparent;
+}
+
 
 .sidebar.open {
   left: 0;
@@ -84,18 +110,108 @@
   font-size: 30px;
   color: white;
   cursor: pointer;
+
+  display: inline-block; /* Ensures no extra space around the "X" */
+  padding: 0;            /* No extra padding */
+  margin: 0;             /* No margin around the "X" */
+  line-height: 1;        /* Ensure tight line height */
+  text-align: center;    /* Align the "X" properly */
+
+  transition: 
+    color 0.3s ease,      /* Smooth color transition */
+    transform 0.2s ease; /* Slight movement effect */
+}
+
+.close-btn:hover {
+  color: #01f4e0;       /* Change text color on hover */
+  transform: translateY(-1px); /* Slight lift effect on hover */
+}
+
+
+
+
+.navLinks{
+  margin-top: 10px;
 }
 
 .navLinks a {
   display: block;
-  padding: 15px;
+  padding: 10px 16px;
+  margin: 6px 12px;
   color: white;
   text-decoration: none;
+  background-color: #000;
+
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+
+  box-shadow:
+    inset 0 6px 8px rgba(255, 255, 255, 0.05),
+    inset 0 -2px 6px rgb(15, 176, 230, 0.8);
+
+  border-radius: 1px;
+  background-clip: padding-box;
+  transition: 
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.2s ease;
 }
 
 .navLinks a:hover {
-  background-color: #444;
+  background-color: #111;
+  border-top: 2px solid #01f4e0;
+  border-bottom: 2px solid #01f4e0;
+  transform: translateY(-1px);
 }
+.dropdown {
+  position: relative;
+  margin-top: 10px;
+   margin-left: 27px;
+}
+
+.dropdownToggle {
+  cursor: pointer;
+  color: white;
+  display: block;
+  padding: 8px 0;
+  width: 80px;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+
+  box-shadow:
+    inset 0 6px 8px rgba(255, 255, 255, 0.05),
+    inset 0 -2px 6px rgb(15, 176, 230, 0.8);
+
+  border-radius: 1px;
+  background-clip: padding-box;
+  transition: 
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.2s ease;
+  text-indent: 10px;
+}
+
+.dropdownMenu {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.dropdownMenu a {
+  color: white;
+  padding: 5px 0;
+  text-decoration: none;
+  text-indent: 10px;
+}
+
+.dropdownMenu a:hover {
+  color: #00f0ff;
+}
+
+
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -126,7 +242,7 @@
   }
 
   .sidebar {
-    width: 200px;
+    width: 250px;
     
   }
   .logo {
