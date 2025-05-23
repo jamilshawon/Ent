@@ -1,13 +1,19 @@
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import type { Settings } from 'react-slick';
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '../components/Header';
 import styles from '../styles/Home.module.css';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const Slider = dynamic(() => import('react-slick'), { ssr: false });
+// Properly typed dynamic import for Slider
+const Slider = dynamic<React.ComponentType<Settings>>(
+  () => import('react-slick'),
+  { ssr: false }
+);
 
 const featuredMovies = [
   { title: "Inception", thumbnail: "/thumbnails/inception.jpg" },
@@ -34,7 +40,7 @@ export default function HomePage() {
     setIsClient(true);
   }, []);
 
-  const sliderSettings = {
+  const sliderSettings: Settings = {
     autoplay: true,
     autoplaySpeed: 3000,
     infinite: true,
@@ -66,7 +72,13 @@ export default function HomePage() {
             className={styles.card}
           >
             <div className={styles.thumbnailWrapper}>
-              <img src={item.thumbnail} alt={item.title} className={styles.thumbnail} />
+              <Image
+                src={item.thumbnail}
+                alt={item.title}
+                fill
+                className={styles.thumbnail}
+                sizes="(max-width: 768px) 100vw, 180px"
+              />
             </div>
             <p className={styles.title}>{item.title}</p>
           </Link>
@@ -75,22 +87,24 @@ export default function HomePage() {
     </section>
   );
 
-  if (!isClient) return null; // Avoid SSR issues with dynamic slider
+  if (!isClient) return null;
 
   return (
     <>
       <Header />
       <main className={styles.container}>
-        {/* Featured Carousel */}
         <section className={styles.carouselSection}>
           <Slider {...sliderSettings}>
             {featuredMovies.map((movie, idx) => (
               <div key={idx} className={styles.carouselItem}>
                 <Link href={`/watch/${movie.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
-                  <img
+                  <Image
                     src={movie.thumbnail}
                     alt={movie.title}
+                    width={1000}
+                    height={400}
                     className={styles.carouselImage}
+                    priority
                   />
                 </Link>
               </div>
@@ -98,10 +112,7 @@ export default function HomePage() {
           </Slider>
         </section>
 
-        {/* Latest Movies */}
         {renderSection("🎬 Latest Movies", latestMovies, "/movies")}
-
-        {/* Latest TV Shows */}
         {renderSection("📺 Latest TV Shows", latestTVShows, "/tv-shows")}
       </main>
     </>
