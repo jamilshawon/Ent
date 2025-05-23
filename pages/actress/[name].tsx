@@ -45,7 +45,7 @@ export default function ActressPage() {
   }
 
   const relatedVideos = Object.entries(videoData).filter(
-    ([, video]: [string, Video]) => video.actress === actress.name
+    ([, video]) => video.actress === actress.name
   );
 
   return (
@@ -80,16 +80,15 @@ export default function ActressPage() {
           <div className="video-list">
             {relatedVideos.length > 0 ? (
               relatedVideos.map(([title, video], index) => (
-                <div className="video-card-wrapper" key={index}>
-                  <VideoCard
-                    title={title}
-                    src={video.src}
-                    description={video.description}
-                    date={video.date}
-                    info={video.info}
-                    actress={video.actress}
-                  />
-                </div>
+                <VideoCard
+                  key={index}
+                  title={title}
+                  src={video.src}
+                  description={video.description}
+                  date={video.date}
+                  info={video.info}
+                  actress={video.actress}
+                />
               ))
             ) : (
               <p className="no-videos">No related videos available.</p>
@@ -104,19 +103,18 @@ export default function ActressPage() {
           color: #f5f5f5;
           min-height: 100vh;
           font-family: 'Segoe UI', sans-serif;
-          padding-top: 110px; /* Adjusted space from the top */
+          padding-top: 110px;
         }
 
         .profile-section {
-          position: relative;
           padding-top: 30px;
           display: flex;
           justify-content: center;
         }
 
         .profile-pic-wrapper {
-          width: 200px; /* Increased width to make it more oval */
-          height: 250px; /* Height is greater than the width to create the egg shape */
+          width: 200px;
+          height: 250px;
           border-radius: 50%;
           overflow: hidden;
           border: 4px solid #000;
@@ -126,7 +124,7 @@ export default function ActressPage() {
         .profile-pic {
           width: 100%;
           height: 100%;
-          object-fit: cover; /* Ensure the image covers the wrapper */
+          object-fit: cover;
         }
 
         .profile-info {
@@ -137,7 +135,6 @@ export default function ActressPage() {
 
         .profile-info h1 {
           font-size: 2rem;
-          color: #fff;
           margin-bottom: 10px;
         }
 
@@ -153,18 +150,16 @@ export default function ActressPage() {
           gap: 10px;
           margin-top: 15px;
           font-size: 0.95rem;
-          color: #bbb;
           justify-content: center;
+          color: #bbb;
         }
 
         .videos-section {
-          padding: 20px 10px; 
-          background-color: #000;
+          padding: 20px 10px;
         }
 
         .videos-section h2 {
           font-size: 1.6rem;
-          color: #f5f5f5;
           margin-bottom: 20px;
         }
 
@@ -172,24 +167,8 @@ export default function ActressPage() {
           display: flex;
           flex-wrap: wrap;
           gap: 20px;
+          justify-content: center;
         }
-
-        .video-card-wrapper {
-          background: rgba(255, 255, 255, 0.05);
-          border-radius: 10px;
-          padding: 2px;
-          backdrop-filter: blur(5px);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-          transition: transform 0.2s ease;
-          width: 300px;
-        }
-
-       .video-card-wrapper:hover {
-         box-shadow:
-         inset 0 10px 8px rgba(255, 255, 255, 0.05),
-         inset 0 -8px 6px rgb(15, 176, 230, 0.8);
-}
-
 
         .no-videos {
           color: #aaa;
@@ -198,29 +177,26 @@ export default function ActressPage() {
         .not-found {
           padding: 50px;
           text-align: center;
-          color: #fff;
         }
 
         @media (max-width: 768px) {
           .profile-pic-wrapper {
-            width: 220px; /* Slightly bigger for smaller screens */
-            height: 270px; /* Maintain the egg shape */
+            width: 220px;
+            height: 270px;
           }
 
           .profile-info {
             padding-top: 5px;
-          }
-          .video-card-wrapper
-
-          .stats {
-            justify-content: center;
-            flex-wrap: wrap;
           }
 
           .video-list {
             flex-direction: column;
             align-items: center;
             width: 100%;
+          }
+
+          .stats {
+            flex-wrap: wrap;
           }
         }
       `}</style>

@@ -63,10 +63,11 @@ export default function Models() {
   }
 
   .model-card:hover {
+    transform: translateY(-8px);
     box-shadow:
-      inset 0 10px 8px rgba(255, 255, 255, 0.05),
-      inset 0 -8px 6px rgba(15, 176, 230, 0.8);
-    transform: translateY(-5px);
+      0 15px 30px rgba(15, 176, 230, 0.4),   /* blue glow */
+      0 0 25px rgba(15, 176, 230, 0.6),      /* soft outer glow */
+      0 0 40px rgba(15, 176, 230, 0.4);      /* additional ambient */
   }
 
   .model-photo {

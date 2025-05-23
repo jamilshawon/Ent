@@ -17,12 +17,11 @@ export default function SearchPage() {
 
   return (
     <Layout>
-      <div style={{ padding: "30px" }}>
+      <div className="search-page">
         <h1>Search Results for: &quot;{q}&quot;</h1>
 
         {filteredVideos.length > 0 ? (
           filteredVideos.map(([title, video]) => (
-            // Use the VideoCard component to render each video
             <VideoCard
               key={title}
               title={title}
@@ -34,9 +33,34 @@ export default function SearchPage() {
             />
           ))
         ) : (
-          <p>No results found for &quot;{q}&quot;</p>
+          <p className="no-results">No results found for &quot;{q}&quot;</p>
         )}
+
+        <style jsx>{`
+          .search-page {
+            padding: 20px;
+            background-color: #000;
+            color: #f5f5f5;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            margin-top: 100px; /* Adjusted space from the top */
+          }
+
+          h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px; /* reduce space below heading */
+            text-align: center;
+          }
+
+          .no-results {
+            color: #aaa;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1.2rem;
+          }
+        `}</style>
       </div>
     </Layout>
+
   );
 }
