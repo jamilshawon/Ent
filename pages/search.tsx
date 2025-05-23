@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Layout from "../components/Layout";
 import { videoData } from "../data/videoData";
-import VideoCard from "../components/VideoCard"; // Import the VideoCard component
+import VideoCard from "../components/VideoCard";
 
 export default function SearchPage() {
   const router = useRouter();
@@ -11,8 +11,8 @@ export default function SearchPage() {
   // Filter the video data by title and actress
   const filteredVideos = Object.entries(videoData).filter(
     ([title, data]) =>
-      title.toLowerCase().includes(searchTerm) || // Match title
-      data.actress?.toLowerCase().includes(searchTerm) // Match actress
+      title.toLowerCase().includes(searchTerm) ||
+      data.actress?.toLowerCase().includes(searchTerm)
   );
 
   return (
@@ -21,17 +21,19 @@ export default function SearchPage() {
         <h1>Search Results for: &quot;{q}&quot;</h1>
 
         {filteredVideos.length > 0 ? (
-          filteredVideos.map(([title, video]) => (
-            <VideoCard
-              key={title}
-              title={title}
-              src={video.src}
-              description={video.description}
-              date={video.date}
-              info={video.info}
-              actress={video.actress}
-            />
-          ))
+          <div className="video-grid">
+            {filteredVideos.map(([title, video]) => (
+              <VideoCard
+                key={title}
+                title={title}
+                src={video.src}
+                description={video.description}
+                date={video.date}
+                info={video.info}
+                actress={video.actress}
+              />
+            ))}
+          </div>
         ) : (
           <p className="no-results">No results found for &quot;{q}&quot;</p>
         )}
@@ -43,13 +45,21 @@ export default function SearchPage() {
             color: #f5f5f5;
             min-height: 100vh;
             font-family: 'Segoe UI', sans-serif;
-            margin-top: 100px; /* Adjusted space from the top */
+            margin-top: 100px;
           }
 
           h1 {
             font-size: 1.8rem;
-            margin-bottom: 10px; /* reduce space below heading */
+            margin-bottom: 20px;
             text-align: center;
+          }
+
+          .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            padding: 20px 0;
+            justify-content: center;
           }
 
           .no-results {
@@ -61,6 +71,5 @@ export default function SearchPage() {
         `}</style>
       </div>
     </Layout>
-
   );
 }
