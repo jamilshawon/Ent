@@ -1,5 +1,7 @@
 import Header from '../components/Header';
 import styles from '../styles/Movies.module.css';
+import Link from 'next/link';
+
 
 const moviesData = [
   { title: "Inception", thumbnail: "/thumbnails/inception.jpg" },
@@ -18,7 +20,11 @@ export default function MoviesPage() {
         <h2 className={styles.heading}>🎬 Latest Movies</h2>
         <div className={styles.grid}>
           {moviesData.map((movie, index) => (
-            <div key={index} className={styles.card}>
+            <Link
+              key={index}
+              href={`/watch/${movie.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+              className={styles.card}
+            >
               <div className={styles.thumbnailWrapper}>
                 <img
                   src={movie.thumbnail}
@@ -27,8 +33,9 @@ export default function MoviesPage() {
                 />
               </div>
               <p className={styles.title}>{movie.title}</p>
-            </div>
+            </Link>
           ))}
+
         </div>
       </main>
     </>

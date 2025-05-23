@@ -1,5 +1,6 @@
 import Header from '../components/Header';
 import styles from '../styles/Movies.module.css';
+import Link from 'next/link';
 
 const tvShowsData = [
   { title: "Breaking Bad", thumbnail: "/thumbnails/breaking-bad.jpg" },
@@ -18,7 +19,11 @@ export default function TVShowsPage() {
         <h2 className={styles.heading}>📺 Popular TV Shows</h2>
         <div className={styles.grid}>
           {tvShowsData.map((show, index) => (
-            <div key={index} className={styles.card}>
+            <Link
+              key={index}
+              href={`/watch/${show.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+              className={styles.card}
+            >
               <div className={styles.thumbnailWrapper}>
                 <img
                   src={show.thumbnail}
@@ -27,7 +32,7 @@ export default function TVShowsPage() {
                 />
               </div>
               <p className={styles.title}>{show.title}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </main>

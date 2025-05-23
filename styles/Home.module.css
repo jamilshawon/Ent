@@ -1,282 +1,184 @@
-
-/* Category Section */
-.section {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
-  padding: 0 20px;
-  margin-top: 80px; /* Add top margin to avoid overlap with the header */
-}
-.categoryContainer {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem; /* Note: gap now also works with flex in modern browsers */
-  margin-bottom: 1rem
+.container {
+  background-color: #000;
+  padding: 40px 20px;
+  min-height: 100vh;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 85px
 }
 
-.category {
-  font-size: 18px;
-  padding: 12px;
-  border: 2px solid #17c5f7; /* ✅ Combined shorthand */
-  border-radius: 1px;
-  background-color: #17c5f7;
-  cursor: pointer;
+.carouselSection {
+  margin-bottom: 50px;
 }
 
-.category.active {
-  background-color: white;
-}
-/* Base styles for the video list and cards */
-.videoList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center; /* Center cards instead of left-align */
-  padding: 1rem;
-  background-color: #f9f9f9; /* Light background for contrast */
-  border-radius: 8px;
-  
+/* Make sure the slider has height and width */
+.slick-slider {
+  width: 100% !important;
+  height: 400px !important;
+  display: block !important;
 }
 
-.videoCard {
+.carouselItem {
   width: 100%;
-  max-width: 400px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
-  /* Default height */
-  height: 350px; /* Adjust as needed */
 }
 
-.videoCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.videoCard img {
+.carouselImage {
   width: 100%;
-  display: block;
-  border-radius: 0; /* Image fills top edge — cleaner */
-  height: 51vh; /* Optional: Set image height */
-  object-fit: cover; /* Ensures image fills the container properly */
-  
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  border: 3px solid #e50914; /* bright 
+  red border */
 }
 
-.info {
-  padding: 0.75rem 1rem;
-  display: flex;
-  flex-direction: column;
-  border-top: none;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2),
-              inset 0 -1px 0 rgba(255, 255, 255, 0.8);
-  background: linear-gradient(to bottom, #eafaff, #ffffff);
-}
-
-.info h4 {
-  margin: 0;
-  font-size: 1rem;
-  color: #333;
+.heading {
+  font-size: 28px;
   font-weight: 600;
-  flex-grow: 1; /* Makes the title stretch within the container */
+  margin: 30px 0 20px;
+  padding-left: 10px;
+  color: #ffffff;
+  border-left: 4px solid #e50914;
 }
-/* Footer Styles */
-.footer {
-  text-align: center;
-  padding: 20px;
-  background-color: black;
-  color: white;
-  box-shadow: inset 0 0 0 1px #01f4e0; /* Inner border effect */
-  
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  box-sizing: border-box;
-}
-.footerContent {
+
+.grid {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
   justify-content: center;
 }
 
-.version {
-  font-size: 0.9rem;
-  color: #aaa;
-  margin-top: 0.2rem;
+.card {
+  background-color: #111;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 180px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.card:hover {
+  transform: scale(1.06);
+  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+}
+
+.thumbnailWrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 150%; /* 2:3 aspect ratio */
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
+.thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .thumbnail {
+  transform: scale(1.1);
+}
+
+.title {
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #e0e0e0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+/* Base styles (desktop) already present... skipping for brevity */
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.viewAll {
+  font-size: 14px;
+  color: #e50914;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.viewAll:hover {
+  color: #ff4d4d;
+  text-decoration: underline;
 }
 
 
+/* Responsive layout adjustments */
 
-
-/* ===== Responsive Styles ===== */
-
-/* Small screens: max 480px (phones) */
-@media (max-width: 480px) {
-  .videoList {
-    grid-template-columns: 1fr; /* Single column */
-  }
-
-  .section {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .category {
-    margin-bottom: 10px;
-  }
-}
-
-/* Small screens to medium screens: max 768px (tablets) */
 @media (max-width: 768px) {
-  .categoryContainer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    gap: 4px;
-    
-    justify-items: center;
-    width: 100%;
-    max-width: 100%;
-    margin-top: 75px;
-
+  .container {
+    padding: 20px 10px;
+    margin-top: 125px ;
   }
 
-  .category {
-    font-size: 16px;
-    padding: 8px;
-    width: 100%;
-   
-  }
-  .videoList {
-   margin-top: -30px;
-
+  .heading {
+    font-size: 22px;
+    margin: 20px 0 16px;
+    padding-left: 8px;
+    border-left: 3px solid #e50914;
   }
 
-  .videoCard {
-    max-width: 370px;
-    width: 100%;
-    height: 23vh; 
-  }
-  .videoCard img {
-    height: 18.5vh;  
-  }
-  .info {
-    padding: 0.5rem 0.75rem;
-  }
-}
-/* Medium screens: 769px to 1024px (tablets and small laptops) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .categoryContainer {
-    display: flex;
-    flex-wrap: wrap;         /* Allows wrapping to the next line if needed */
-    justify-content: center; /* Centers the items */
-    gap: 5px;                /* Reduce this number to decrease the gap */
-    width: 50%;
-    max-width: 50%;
-    margin-top: 10px;
-    margin-left: -20px;
+  .carouselImage {
+    height: 220px; /* smaller for phones */
+    border-radius: 8px;
   }
 
-  .category {
-    font-size: 18px;
-    padding: 5px;
-    text-align: center;
-    background-color: #17c5f7;
-    border: 2px solid #17c5f7;
-    border-radius: 1px;
-    color: black;
-    cursor: pointer;
-  }
-  .videoList {
-     margin-top: -20px;
-     
-
-    }
-
-    .videoCard {
-      max-width: 370px;
-      width: 100%;
-      height: 35vh; 
-    }
-    .videoCard img {
-      height: 28vh;  
-    }
-    .info {
-      padding: 0.5rem 0.75rem;
-    }
-
-}
-
-
-
-
-/* Large screens: 1025px to 1440px (laptops/desktops) */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .videoList {
-    grid-template-columns: 1fr 1fr 1fr; /* Three columns */
-  }
-
-  .categoryContainer {
-    display: flex;
-    flex-wrap: nowrap; /* Prevent wrapping */
+  .grid {
+    gap: 16px;
     justify-content: center;
-    gap: 10px; /* Adjust spacing between items */
-    width: 30%; /* Allow full row */
-    max-width: 100%;
-    margin: 10px auto;
-    transform: translateX(-10%);
   }
 
-  .category {
-    flex: 1 0 auto; /* Prevent shrinking too small */
-    font-size: 15px;
-    padding: 5px;
-    margin-right: 0; /* Remove margin-right from all */
+  .card {
+    width: 130px;
+    border-radius: 8px;
   }
 
-  .category:last-child {
-    margin-right: 0; /* Ensure no extra margin */
+  .thumbnailWrapper {
+    padding-top: 150%;
+    border-radius: 8px 8px 0 0;
   }
 
-  .section {
-    margin-top: 90px;
+  .title {
+    font-size: 13px;
+    padding: 8px;
   }
-  .videoCard {
-    max-width: 400px;
-    width: 100%;
-    height: 45vh; 
-  }
-  .videoCard img {
-    height: 38vh;  
-  }
-  .info {
-    padding: 0.5rem 0.85rem;
+
+  .carouselItem {
+    padding: 0 5px;
   }
 }
 
-
-/* Extra large screens: 1441px and above (large desktops) */
-@media (min-width: 1441px) {
-  .videoList {
-    grid-template-columns: 1fr 1fr 1fr 1fr; /* Four columns on large desktops */
+/* Extra small devices */
+@media (max-width: 480px) {
+  .container{
+    margin-top: 120px;;
+  }
+  .carouselImage {
+    height: 180px;
   }
 
-  .section {
-    margin-top: 120px; /* Extra spacing for large desktops */
+  .card {
+    width: 110px;
   }
-  .videoCard {
-    max-width: 400px;
-    width: 100%;
-    height: 55vh; 
-  }
-  .videoCard img {
-    height: 48vh;  
-  }
-  .info {
-    padding: 0.5rem 0.85rem;
+
+  .title {
+    font-size: 12px;
   }
 }
 

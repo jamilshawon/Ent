@@ -108,7 +108,7 @@ export default function Header() {
           <Link href="/">Home</Link>
           <Link href="/movies">Movies</Link>
 
-          <Link href="/tvshows">TVShows</Link>
+          <Link href="/tv-shows">TVShows</Link>
 
           <div className={styles.dropdown}>
             <span className={styles.dropdownToggle} onClick={toggleGenres}>

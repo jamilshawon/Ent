@@ -1,87 +1,109 @@
-import { useState } from "react";
-import Layout from "../components/Layout";
-import styles from "../styles/Home.module.css";
-import Link from "next/link";
+import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import Header from '../components/Header';
+import styles from '../styles/Home.module.css';
 
-export default function Home() {
-  const [activeCategory, setActiveCategory] = useState("Latest");
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-  // Updated videoData with thumbnail paths
-  const videoData: Record<string, { title: string, thumbnail: string }[]> = {
-    Latest: [
-      { title: "Rockstar(2011)", thumbnail: "/thumbnails/rockstar-2011.jpg" },
-      { title: "Vikings", thumbnail: "/thumbnails/vikings.jpg" },
-      { title: "Video C", thumbnail: "/thumbnails/video-c.jpg" },
-      { title: "Video D", thumbnail: "/thumbnails/video-d.jpg" },
-      { title: "Video E", thumbnail: "/thumbnails/video-e.jpg" },
-      { title: "Video F", thumbnail: "/thumbnails/video-f.jpg" },
-    ],
-    Popular: [
-      { title: "Popular 1", thumbnail: "/thumbnails/popular-1.jpg" },
-      { title: "Popular 2", thumbnail: "/thumbnails/popular-2.jpg" },
-      { title: "Popular 3", thumbnail: "/thumbnails/popular-3.jpg" },
-      { title: "Popular 4", thumbnail: "/thumbnails/popular-4.jpg" },
-    ],
-    Upcoming: [
-      { title: "Upcoming 1", thumbnail: "/thumbnails/upcoming-1.jpg" },
-      { title: "Upcoming 2", thumbnail: "/thumbnails/upcoming-2.jpg" },
-      { title: "Upcoming 3", thumbnail: "/thumbnails/upcoming-3.jpg" },
-    ],
-    Engaged: [
-      { title: "Engaged 1", thumbnail: "/thumbnails/engaged-1.jpg" },
-      { title: "Engaged 2", thumbnail: "/thumbnails/engaged-2.jpg" },
-      { title: "Engaged 3", thumbnail: "/thumbnails/engaged-3.jpg" },
-      { title: "Engaged 4", thumbnail: "/thumbnails/engaged-4.jpg" },
-      { title: "Engaged 5", thumbnail: "/thumbnails/engaged-5.jpg" },
-    ],
+const Slider = dynamic(() => import('react-slick'), { ssr: false });
+
+const featuredMovies = [
+  { title: "Inception", thumbnail: "/thumbnails/inception.jpg" },
+  { title: "Interstellar", thumbnail: "/thumbnails/interstellar.jpg" },
+  { title: "The Dark Knight", thumbnail: "/thumbnails/dark-knight.jpg" },
+];
+
+const latestMovies = [
+  { title: "Dune", thumbnail: "/thumbnails/dune.jpg" },
+  { title: "Avengers: Endgame", thumbnail: "/thumbnails/endgame.jpg" },
+  { title: "Joker", thumbnail: "/thumbnails/joker.jpg" },
+];
+
+const latestTVShows = [
+  { title: "Breaking Bad", thumbnail: "/thumbnails/breaking-bad.jpg" },
+  { title: "Stranger Things", thumbnail: "/thumbnails/stranger-things.jpg" },
+  { title: "The Witcher", thumbnail: "/thumbnails/witcher.jpg" },
+];
+
+export default function HomePage() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const sliderSettings = {
+    autoplay: true,
+    autoplaySpeed: 3000,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dots: true,
+    arrows: false,
+    pauseOnHover: false,
   };
 
-  return (
-    <Layout>
-      {/* Categories Section */}
-      <section className={styles.section}>
-        <div className={styles.categoryContainer}>
-          {["Latest", "Popular", "Upcoming", "Engaged"].map((cat) => (
-            <button
-              key={cat}
-              className={`${styles.category} ${
-                activeCategory === cat ? styles.active : ""
-              }`}
-              onClick={() => setActiveCategory(cat)}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </section>
-
-      {/* Video List */}
-      <div className={styles.videoList}>
-        {videoData[activeCategory].map((video, index) => (
+  const renderSection = (
+    title: string,
+    items: typeof latestMovies,
+    viewAllLink: string
+  ) => (
+    <section className={styles.section}>
+      <div className={styles.sectionHeader}>
+        <h2 className={styles.heading}>{title}</h2>
+        <Link href={viewAllLink} className={styles.viewAll}>
+          View All →
+        </Link>
+      </div>
+      <div className={styles.grid}>
+        {items.map((item, idx) => (
           <Link
-            key={index}
-            href={`/video/${encodeURIComponent(video.title)}`}
-            className={styles.videoCard}
+            key={idx}
+            href={`/watch/${item.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+            className={styles.card}
           >
-            <img
-              src={video.thumbnail} // Use the actual thumbnail path
-              alt={`Thumbnail for ${video.title}`}
-              className={styles.thumbnail}
-            />
-            <div className={styles.info}>
-              <h4>{video.title}</h4>
+            <div className={styles.thumbnailWrapper}>
+              <img src={item.thumbnail} alt={item.title} className={styles.thumbnail} />
             </div>
+            <p className={styles.title}>{item.title}</p>
           </Link>
         ))}
       </div>
+    </section>
+  );
 
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <div className={styles.footerContent}>
-          <div>Vid-Lab</div>
-          <div className={styles.version}>v1.1</div>
-        </div>
-      </footer>
-    </Layout>
+  if (!isClient) return null; // Avoid SSR issues with dynamic slider
+
+  return (
+    <>
+      <Header />
+      <main className={styles.container}>
+        {/* Featured Carousel */}
+        <section className={styles.carouselSection}>
+          <Slider {...sliderSettings}>
+            {featuredMovies.map((movie, idx) => (
+              <div key={idx} className={styles.carouselItem}>
+                <Link href={`/watch/${movie.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
+                  <img
+                    src={movie.thumbnail}
+                    alt={movie.title}
+                    className={styles.carouselImage}
+                  />
+                </Link>
+              </div>
+            ))}
+          </Slider>
+        </section>
+
+        {/* Latest Movies */}
+        {renderSection("🎬 Latest Movies", latestMovies, "/movies")}
+
+        {/* Latest TV Shows */}
+        {renderSection("📺 Latest TV Shows", latestTVShows, "/tv-shows")}
+      </main>
+    </>
   );
 }
