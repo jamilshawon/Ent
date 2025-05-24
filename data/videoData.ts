@@ -80,5 +80,19 @@ export const videoData: Record<
     info: "Nuns",
     actress: "Cindy Craves", // ✅ Example added
   },
+  "Women Seeking Women 122": {
+    src: "https://streamtape.com/e/bvWlxRLVb6TPy0W/",
+    description: "Lesbian Fun",
+    date: "2011-11-11",
+    info: "Hell Convent",
+    actress: "Cindy Craves", // ✅ Added
+  },
+  "Women Seeking Women 107": {
+    src: "https://streamtape.com/e/GbBLVjzojyUdrJ/",
+    description: "Lesbian Fun",
+    date: "2011-11-11",
+    info: "Hell Convent",
+    actress: "Cindy Craves", // ✅ Added
+  },
   // Add more videos here...
 };

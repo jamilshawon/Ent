@@ -27,6 +27,9 @@ export default function Home() {
 
   const videoData: Record<string, { title: string; thumbnail: string }[]> = {
     Latest: [
+       { title: "Women Seeking Women 73", thumbnail: "/actresses/CindyCraves/wsw73.png" },
+      { title: "Women Seeking Women 107", thumbnail: "/actresses/CindyCraves/wsw107.png" },
+       { title: "Women Seeking Women 122", thumbnail: "/thumbnails/wsw122.png" },
       { title: "Lesbian Triangles", thumbnail: "/actresses/Lesbian-triangles25.jpg" },
       { title: "Mother Superior", thumbnail: "/actresses/Mother-Superior.jpg" },
       { title: "Mother Superior 2", thumbnail: "/actresses/Mother-superior2.jpg" },
@@ -40,10 +43,12 @@ export default function Home() {
       { title: "Women Seeking Women 125", thumbnail: "/thumbnails/Wsw125.jpg" },
     ],
     Popular: [
-      { title: "Popular 1", thumbnail: "/thumbnails/popular-1.jpg" },
-      { title: "Popular 2", thumbnail: "/thumbnails/popular-2.jpg" },
-      { title: "Popular 3", thumbnail: "/thumbnails/popular-3.jpg" },
-      { title: "Popular 4", thumbnail: "/thumbnails/popular-4.jpg" },
+      { title: "Mother Superior", thumbnail: "/actresses/Mother-Superior.jpg" },
+      { title: "Mother Superior 2", thumbnail: "/actresses/Mother-superior2.jpg" },
+      { title: "Mother Superior 3", thumbnail: "/actresses/Ms3.jpg" },
+      { title: "Under the Veil", thumbnail: "/actresses/Utv.jpg" },
+      { title: "Confessions of a Sinful Nun ", thumbnail: "/actresses/Csn.jpg" },
+      { title: "Confessions of a Sinful Nun 2", thumbnail: "/actresses/Csn2.jpg" },
     ],
     Upcoming: [
       { title: "Upcoming 1", thumbnail: "/thumbnails/upcoming-1.jpg" },
@@ -51,11 +56,12 @@ export default function Home() {
       { title: "Upcoming 3", thumbnail: "/thumbnails/upcoming-3.jpg" },
     ],
     Engaged: [
-      { title: "Engaged 1", thumbnail: "/thumbnails/engaged-1.jpg" },
-      { title: "Engaged 2", thumbnail: "/thumbnails/engaged-2.jpg" },
-      { title: "Engaged 3", thumbnail: "/thumbnails/engaged-3.jpg" },
-      { title: "Engaged 4", thumbnail: "/thumbnails/engaged-4.jpg" },
-      { title: "Engaged 5", thumbnail: "/thumbnails/engaged-5.jpg" },
+      { title: "Mother Superior", thumbnail: "/actresses/Mother-Superior.jpg" },
+      { title: "Mother Superior 2", thumbnail: "/actresses/Mother-superior2.jpg" },
+      { title: "Mother Superior 3", thumbnail: "/actresses/Ms3.jpg" },
+      { title: "Under the Veil", thumbnail: "/actresses/Utv.jpg" },
+      { title: "Confessions of a Sinful Nun ", thumbnail: "/actresses/Csn.jpg" },
+      { title: "Confessions of a Sinful Nun 2", thumbnail: "/actresses/Csn2.jpg" },
     ],
   };
 
