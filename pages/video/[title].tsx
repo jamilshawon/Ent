@@ -5,16 +5,15 @@ import { videoData } from "../../data/videoData";
 export default function VideoPage() {
   const router = useRouter();
   const { title } = router.query;
-
   const video = videoData[title as string];
 
   return (
     <Layout>
       {video ? (
-        <div className="videos-section">
-          <h2>{title}</h2>
-          <div className="video-card-wrapper">
-            <div className="video-wrapper">
+        <div className="video-section">
+          <h1>{title}</h1>
+          <div className="video-container">
+            <div className="video-frame">
               <iframe
                 src={video.src}
                 title={title as string}
@@ -23,7 +22,7 @@ export default function VideoPage() {
                 allowFullScreen
               />
             </div>
-            <div className="video-details">
+            <div className="video-info">
               <p><strong>Description:</strong> {video.description}</p>
               {video.date && <p><strong>Date:</strong> {video.date}</p>}
               {video.info && <p><strong>Info:</strong> {video.info}</p>}
@@ -32,7 +31,6 @@ export default function VideoPage() {
                   <strong>Actress:</strong>{" "}
                   <a
                     href={`/actress/${video.actress.toLowerCase().replace(/\s+/g, "-")}`}
-                    style={{ color: "#01f4e0", textDecoration: "underline" }}
                   >
                     {video.actress}
                   </a>
@@ -42,77 +40,85 @@ export default function VideoPage() {
           </div>
         </div>
       ) : (
-        <p style={{ textAlign: "center", padding: "40px", fontSize: "1.2rem", color: "#ecf0f1" }}>
-          Sorry, no video found for this title.
-        </p>
+        <p className="not-found">Sorry, no video found for this title.</p>
       )}
 
       <style jsx>{`
-        .videos-section {
-          padding: 20px 10px; 
-          background-color: #000;
+        .video-section {
+          background: #121212;
+          color: #ffffff;
+          padding: 80px 20px 40px;
           min-height: 100vh;
-          color: #f5f5f5;
-          font-family: 'Segoe UI', sans-serif;
-          margin-top: 100px; /* Adjusted space from the top */
+          font-family: 'Inter', sans-serif;
         }
 
-        .videos-section h2 {
-          font-size: 1.6rem;
-          color: #f5f5f5;
-          margin-bottom: 20px;
+        h1 {
           text-align: center;
+          font-size: 2rem;
+          margin-bottom: 30px;
+          color: #00e6d2;
         }
 
-        .video-card-wrapper {
-          background: rgba(255, 255, 255, 0.05);
-          border-radius: 10px;
-          padding: 2px;
-          backdrop-filter: blur(5px);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-          transition: transform 0.2s ease;
-          max-width: 600px;
+        .video-container {
+          background: #1e1e1e;
+          border-radius: 12px;
+          max-width: 800px;
           margin: 0 auto;
-        }
-
-        .video-card-wrapper:hover {
-          box-shadow:
-            inset 0 10px 8px rgba(255, 255, 255, 0.05),
-            inset 0 -8px 6px rgb(15, 176, 230, 0.8);
-        }
-
-        .video-wrapper {
-          position: relative;
-          padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-          height: 0;
           overflow: hidden;
-          border-radius: 10px;
-          margin-bottom: 10px;
-          border: 2px solid #01f4e0;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+          transition: all 0.3s ease;
         }
 
-        .video-wrapper iframe {
+        .video-frame {
+          position: relative;
+          padding-bottom: 56.25%;
+          height: 0;
+          border-bottom: 3px solid #00e6d2;
+        }
+
+        .video-frame iframe {
           position: absolute;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          border-radius: 10px;
           border: none;
         }
 
-        .video-details {
-          padding: 15px 20px;
-          color: #ecf0f1;
-        }
-
-        .video-details p {
-          margin: 10px 0;
+        .video-info {
+          padding: 20px;
           font-size: 1rem;
+          line-height: 1.6;
         }
 
-        .video-details strong {
-          color: #3498db;
+        .video-info strong {
+          color: #00baff;
+        }
+
+        .video-info a {
+          color: #00e6d2;
+          text-decoration: none;
+        }
+
+        .video-info a:hover {
+          text-decoration: underline;
+        }
+
+        .not-found {
+          text-align: center;
+          font-size: 1.25rem;
+          padding: 50px;
+          color: #cccccc;
+        }
+
+        @media (max-width: 600px) {
+          h1 {
+            font-size: 1.5rem;
+          }
+
+          .video-info {
+            font-size: 0.95rem;
+          }
         }
       `}</style>
     </Layout>

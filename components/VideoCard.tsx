@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 type VideoProps = {
   title: string;
@@ -10,111 +11,151 @@ type VideoProps = {
 };
 
 export default function VideoCard({ title, src, description, date, info, actress }: VideoProps) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    const safeTitle = encodeURIComponent(title);
+    router.push(`/video/${safeTitle}`);
+  };
+
   return (
-    <div className="video-card">
-      <h2 title={title}>{title}</h2>
-      <div className="video-wrapper">
+    <div className="card" onClick={handleClick} role="button" tabIndex={0} onKeyPress={(e) => e.key === 'Enter' && handleClick()}>
+      <div className="videoBox">
         <iframe
           src={src}
           title={title}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
+          loading="lazy"
         />
       </div>
-      <div className="video-details">
-        <p className="description"><strong>Description:</strong> {description}</p>
-        {date && <p><strong>Date:</strong> {date}</p>}
-        {info && <p><strong>Info:</strong> {info}</p>}
-        {actress && (
-          <p>
-            <strong>Actress:</strong>{" "}
-            <a href={`/actress/${actress.toLowerCase().replace(/\s+/g, "-")}`}>
-              {actress}
-            </a>
-          </p>
-        )}
+
+      <div className="info">
+        <h3 className="title" title={title}>{title}</h3>
+        <p className="description" title={description}>{description}</p>
+        <div className="meta-line">
+          {date && <span><strong>Date:</strong> {date}</span>}
+          {info && <span><strong>Info:</strong> {info}</span>}
+          {actress && (
+            <span>
+              <strong>Actress:</strong>{" "}
+              <a
+                href={`/actress/${actress.toLowerCase().replace(/\s+/g, "-")}`}
+                onClick={(e) => e.stopPropagation()}
+                tabIndex={0}
+              >
+                {actress}
+              </a>
+            </span>
+          )}
+        </div>
       </div>
 
       <style jsx>{`
-        .video-card {
-          width: 380px;                 /* Fixed width */
-          height: 450px;                /* Fixed height */
-          background: rgba(255, 255, 255, 0.05);
-          border-radius: 10px;
-          backdrop-filter: blur(5px);
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
-          padding: 20px;
-          margin: 10px 0;
+        .card {
+          background-color: #121212;
+          border-radius: 12px;
+          overflow: hidden;
+          width: 320px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+          cursor: pointer;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
           display: flex;
           flex-direction: column;
-          color: #fff;
-          cursor: pointer;
-          overflow: hidden;           /* Prevent overflow */
-        }
-        .video-card:hover {
-          box-shadow:
-            inset 0 10px 8px rgba(255, 255, 255, 0.05),
-            inset 0 -8px 6px rgba(15, 176, 230, 0.8);
-          transform: translateY(-5px);
+          user-select: none;
         }
 
-        h2 {
-          font-size: 1.2rem;
-          color: #01f4e0;
-          margin: 0;
-          white-space: nowrap;         /* Prevent wrapping */
-          overflow: hidden;
-          text-overflow: ellipsis;     /* Truncate long titles */
+        .card:hover,
+        .card:focus {
+          transform: translateY(-6px);
+          box-shadow: 0 12px 30px rgba(0, 230, 210, 0.6);
+          outline: none;
         }
 
-        .video-wrapper {
+        .videoBox {
           position: relative;
-          padding-bottom: 56.25%;      /* 16:9 aspect ratio */
+          padding-bottom: 56.25%; /* 16:9 aspect ratio */
           height: 0;
           overflow: hidden;
-          border: 2px solid #01f4e0;
-          border-radius: 10px;
-          margin: 15px 0;
-          flex-shrink: 0;              /* Prevent shrinking */
+          border-bottom: 3px solid #00e6d2;
         }
 
-        .video-wrapper iframe {
+        .videoBox iframe {
           position: absolute;
-          top: 0;
-          left: 0;
+          top: 0; left: 0;
           width: 100%;
           height: 100%;
+          border: none;
+          border-radius: 0 0 12px 12px;
+          background-color: #000;
         }
 
-        .video-details {
-          flex-grow: 1;                /* Take up remaining space */
+        .info {
+          padding: 16px 20px;
+          color: #eee;
+          font-family: 'Inter', sans-serif;
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        .title {
+          margin: 0 0 8px;
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: #00e6d2;
+          white-space: nowrap;
           overflow: hidden;
-          font-size: 0.95rem;
+          text-overflow: ellipsis;
         }
 
         .description {
-          max-height: 3em;             /* About 2 lines */
+          flex-grow: 1;
+          font-size: 0.9rem;
+          color: #bbb;
+          margin: 0 0 12px;
+          line-height: 1.3;
           overflow: hidden;
-          text-overflow: ellipsis;
           display: -webkit-box;
-          -webkit-line-clamp: 2;
+          -webkit-line-clamp: 3;
           -webkit-box-orient: vertical;
-          margin: 10px 0;
         }
 
-        .video-details p {
-          margin: 5px 0;
+        .meta-line {
+          font-size: 0.8rem;
+          color: #999;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          font-weight: 500;
         }
 
-        .video-details strong {
-          color: #01f4e0;
+        .meta-line strong {
+          color: #00baff;
+          margin-right: 4px;
         }
 
         a {
-          color: #01f4e0;
+          color: #00e6d2;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        a:hover,
+        a:focus {
           text-decoration: underline;
+          outline: none;
+        }
+
+        @media (max-width: 400px) {
+          .card {
+            width: 100%;
+          }
+          .description {
+            -webkit-line-clamp: 2;
+          }
         }
       `}</style>
     </div>

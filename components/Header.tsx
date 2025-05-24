@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Header() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [sidebarStyle, setSidebarStyle] = useState({});
+  const [sidebarStyle, setSidebarStyle] = useState<Record<string, string>>({});
   const [searchTerm, setSearchTerm] = useState('');
   const router = useRouter();
 
@@ -17,15 +17,13 @@ export default function Header() {
     setSearchTerm(event.target.value);
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent) => {
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && searchTerm.trim()) {
-      // Redirect to search results page with searchTerm as query parameter
       router.push(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
     }
   };
 
-
-  // Responsive logic for top/padding based on screen and route
+  // Responsive top/padding styles based on route and screen width
   useEffect(() => {
     const updateSidebarStyle = () => {
       const width = window.innerWidth;
@@ -73,28 +71,29 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <Link href="/signin">
+      <Link href="/signin" passHref>
         <button className={styles.signIn}>Sign In</button>
       </Link>
+
       <Link href="/" passHref>
-        <div className={styles.logo} style={{ cursor: "pointer" }}>VID-PERSONAL</div>
+        <div className={styles.logo} style={{ cursor: "pointer" }}>
+          VID-PERSONAL
+        </div>
       </Link>
 
-      {/* Search input */}
       <input
         type="text"
         className={styles.search}
         placeholder="Search here..."
         value={searchTerm}
-        onChange={handleSearch}  // Updates searchTerm state as user types
-        onKeyDown={handleKeyPress}  // Trigger search on Enter key press
+        onChange={handleSearch}
+        onKeyDown={handleKeyPress}
       />
 
       <span className={styles["toggle-btn"]} onClick={toggleSidebar}>
         ☰
       </span>
 
-      {/* Sidebar */}
       <div
         className={`${styles.sidebar} ${sidebarOpen ? styles.open : ""}`}
         style={sidebarStyle}
@@ -102,12 +101,12 @@ export default function Header() {
         <span className={styles["close-btn"]} onClick={toggleSidebar}>
           &times;
         </span>
-        <div className={styles.navLinks}>
+        <nav className={styles.navLinks}>
           <Link href="/">Home</Link>
-          <Link href="/models">Models</Link>  
+          <Link href="/models">Models</Link>
           <Link href="#">Series</Link>
           <Link href="#">Sites</Link>
-        </div>
+        </nav>
       </div>
     </header>
   );
