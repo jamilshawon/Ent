@@ -27,6 +27,7 @@ export default function Home() {
 
   const videoData: Record<string, { title: string; thumbnail: string }[]> = {
     Latest: [
+      { title: "Women Seeking Women 54", thumbnail: "/actresses/CindyCraves/wsw54.jpg" },
        { title: "Women Seeking Women 73", thumbnail: "/actresses/CindyCraves/wsw73.png" },
       { title: "Women Seeking Women 107", thumbnail: "/actresses/CindyCraves/wsw107.png" },
        { title: "Women Seeking Women 122", thumbnail: "/thumbnails/wsw122.png" },

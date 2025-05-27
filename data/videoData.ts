@@ -12,6 +12,17 @@ export type VideoInfo = {
 };
 
 export const videoData: Record<string, VideoInfo> = {
+    "Women Seeking Women 54": {
+      title: "Women Seeking Women 54",
+      src: "https://streamtape.com/e/APadq6ag8oIWO6/",
+      description: "Lesbian Fun",
+      date: "2011-11-11",
+      info: "Hell Convent",
+      actress: "Cindy Craves",
+      thumbnail: "/actresses/CindyCraves/wsw54.jpg",
+      category: "Latest",
+    },
+  
   "Lesbian Triangles": {
     title: "Lesbian Triangles",
     src: "https://streamtape.com/e/28G23JD7lYczXq",
