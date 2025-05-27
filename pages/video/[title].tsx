@@ -32,7 +32,7 @@ export default function VideoPage() {
     return (
       <Layout>
         <div className="not-found">
-          No video found for <span>"{decodedTitle}"</span>.
+          No video found for <span>{`"${decodedTitle}"`}</span>.
         </div>
         <style jsx>{`
           .not-found {
@@ -136,7 +136,8 @@ export default function VideoPage() {
 
         .video {
           position: absolute;
-          top: 0; left: 0;
+          top: 0;
+          left: 0;
           width: 100%;
           height: 100%;
           border: none;
@@ -191,14 +192,17 @@ export default function VideoPage() {
           .container {
             margin: 135px 16px 80px;
           }
+
           .title {
             font-size: 1.7rem;
             margin-bottom: 20px;
           }
+
           .video-info {
             font-size: 1rem;
             gap: 16px;
           }
+
           .metadata {
             gap: 18px;
           }
