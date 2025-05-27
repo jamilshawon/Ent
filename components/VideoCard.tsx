@@ -8,9 +8,20 @@ type VideoProps = {
   date?: string;
   info?: string;
   actress?: string;
+  thumbnail: string;
+  showEmbed?: boolean;
 };
 
-export default function VideoCard({ title, src, description, date, info, actress }: VideoProps) {
+export default function VideoCard({
+  title,
+  src,
+  description,
+  date,
+  info,
+  actress,
+  thumbnail,
+  showEmbed = false,
+}: VideoProps) {
   const router = useRouter();
 
   const handleClick = () => {
@@ -19,21 +30,40 @@ export default function VideoCard({ title, src, description, date, info, actress
   };
 
   return (
-    <div className="card" onClick={handleClick} role="button" tabIndex={0} onKeyPress={(e) => e.key === 'Enter' && handleClick()}>
+    <div
+      className="card"
+      onClick={handleClick}
+      role="button"
+      tabIndex={0}
+      onKeyPress={(e) => e.key === "Enter" && handleClick()}
+    >
       <div className="videoBox">
-        <iframe
-          src={src}
-          title={title}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          loading="lazy"
-        />
+        {showEmbed ? (
+          <iframe
+            src={src}
+            title={title}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+          />
+        ) : (
+          <img
+            src={thumbnail}
+            alt={`Thumbnail for ${title}`}
+            loading="lazy"
+            onError={(e) => (e.currentTarget.src = "/thumbnails/placeholder.jpg")}
+          />
+        )}
       </div>
 
       <div className="info">
-        <h3 className="title" title={title}>{title}</h3>
-        <p className="description" title={description}>{description}</p>
+        <h3 className="title" title={title}>
+          {title}
+        </h3>
+        <p className="description" title={description}>
+          {description}
+        </p>
         <div className="meta-line">
           {date && <span><strong>Date:</strong> {date}</span>}
           {info && <span><strong>Info:</strong> {info}</span>}
@@ -43,7 +73,6 @@ export default function VideoCard({ title, src, description, date, info, actress
               <a
                 href={`/actress/${actress.toLowerCase().replace(/\s+/g, "-")}`}
                 onClick={(e) => e.stopPropagation()}
-                tabIndex={0}
               >
                 {actress}
               </a>
@@ -58,7 +87,7 @@ export default function VideoCard({ title, src, description, date, info, actress
           border-radius: 12px;
           overflow: hidden;
           width: 320px;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
           cursor: pointer;
           transition: transform 0.25s ease, box-shadow 0.25s ease;
           display: flex;
@@ -75,18 +104,20 @@ export default function VideoCard({ title, src, description, date, info, actress
 
         .videoBox {
           position: relative;
-          padding-bottom: 56.25%; /* 16:9 aspect ratio */
+          padding-bottom: 56.25%;
           height: 0;
           overflow: hidden;
           border-bottom: 3px solid #00e6d2;
         }
 
-        .videoBox iframe {
+        .videoBox iframe,
+        .videoBox img {
           position: absolute;
-          top: 0; left: 0;
+          top: 0;
+          left: 0;
           width: 100%;
           height: 100%;
-          border: none;
+          object-fit: cover;
           border-radius: 0 0 12px 12px;
           background-color: #000;
         }

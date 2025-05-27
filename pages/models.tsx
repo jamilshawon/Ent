@@ -11,9 +11,9 @@ const actresses = [
 export default function Models() {
   return (
     <Layout>
-      <main className="models-container">
-        <h1 className="models-title">Models</h1>
-        <div className="models-list">
+      <main className="models-page">
+        <h1 className="page-title">Models</h1>
+        <div className="models-grid">
           {actresses.map((actress, index) => (
             <Link
               href={`/actress/${actress.name.toLowerCase().replace(/\s+/g, "-")}`}
@@ -25,174 +25,156 @@ export default function Models() {
               <div className="model-photo">
                 <img src={actress.image} alt={actress.name} loading="lazy" />
               </div>
-              <h3>{actress.name}</h3>
+              <h3 className="model-name">{actress.name}</h3>
             </Link>
           ))}
         </div>
       </main>
 
       <style jsx>{`
-        .models-container {
-          background: linear-gradient(135deg, #08080b 0%, #0f0f13 100%);
+        .models-page {
+          background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
           min-height: 100vh;
-          padding: 100px 40px 60px;
+          padding: 100px 40px;
           display: flex;
           flex-direction: column;
           align-items: center;
-          color: #e0e0e6;
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-            Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+          color: #e0e6f1;
+          font-family: 'Poppins', sans-serif;
           box-sizing: border-box;
-          width: 100vw;
         }
 
-        .models-title {
+        .page-title {
           font-size: 3.8rem;
-          font-weight: 900;
+          font-weight: 800;
           margin-bottom: 70px;
-          color: #00ffe3;
-          text-align: center;
+          color: #76e2f6;
+          text-shadow: 0 0 10px #76e2f6aa;
           letter-spacing: 2px;
-          text-shadow:
-            0 0 20px rgba(0, 255, 227, 0.8),
-            0 0 40px rgba(0, 255, 227, 0.5);
           user-select: none;
         }
 
-        .models-list {
+        .models-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 36px;
           width: 100%;
           max-width: 1200px;
-          justify-items: center;
         }
 
         .model-card {
-          background: linear-gradient(145deg, #111111, #1b1b1b);
-          border-radius: 18px;
-          padding: 10px;
-          width: 280px;
+          background: linear-gradient(145deg, #1b2733, #223447);
+          border-radius: 20px;
+          box-shadow:
+            0 8px 20px rgba(118, 226, 246, 0.3),
+            inset 0 0 12px rgba(118, 226, 246, 0.15);
           cursor: pointer;
-          color: inherit;
           text-decoration: none;
+          color: inherit;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          box-shadow:
-            0 12px 36px rgba(0, 255, 230, 0.2),
-            inset 0 0 12px rgba(255, 255, 255, 0.06);
-          transition:
-            transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-            box-shadow 0.4s ease,
-            background 0.4s ease;
+          overflow: hidden;
+          transition: 
+            box-shadow 0.35s ease, 
+            transform 0.35s ease,
+            background 0.35s ease;
+          will-change: transform, box-shadow, background;
           user-select: none;
-          will-change: transform, box-shadow;
-          perspective: 900px;
+          perspective: 1000px;
         }
 
         .model-card:hover,
         .model-card:focus-visible {
-          outline: none;
-          transform: scale(1.1) rotateX(4deg) rotateY(-4deg);
+          background: linear-gradient(145deg, #76e2f6, #1f4d6e);
           box-shadow:
-            0 35px 55px rgba(0, 255, 230, 0.8),
-            0 0 50px rgba(0, 255, 230, 0.9),
-            inset 0 0 28px rgba(0, 255, 230, 0.45);
-          background: linear-gradient(145deg, #00ffe3, #009d89);
-          z-index: 20;
+            0 16px 40px rgba(118, 226, 246, 0.7),
+            0 0 30px #76e2f6cc,
+            inset 0 0 24px #76e2f6bb;
+          transform: translateY(-10px) rotateX(5deg) rotateY(-5deg);
+          outline: none;
+          z-index: 10;
         }
 
         .model-photo {
           width: 100%;
-          height: 460px;
-          border-radius: 16px;
+          aspect-ratio: 3 / 4;
           overflow: hidden;
-          background: linear-gradient(135deg, #232323, #121212);
-          box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.85);
+          border-radius: 20px 20px 0 0;
+          box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.6);
+          transition: transform 0.5s ease;
+          will-change: transform;
+          background: #101f2d;
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: box-shadow 0.35s ease;
-          will-change: box-shadow;
         }
 
         .model-card:hover .model-photo,
         .model-card:focus-visible .model-photo {
+          transform: scale(1.1);
           box-shadow:
-            inset 0 0 30px rgba(0, 255, 230, 1),
-            0 0 26px rgba(0, 255, 230, 0.4);
+            inset 0 0 35px #76e2f6dd,
+            0 0 25px #76e2f6cc;
         }
 
         .model-photo img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          border-radius: 16px;
+          display: block;
+          border-radius: 20px 20px 0 0;
           transition: transform 0.5s ease;
           will-change: transform;
+          user-select: none;
+          pointer-events: none;
         }
 
-        .model-card:hover .model-photo img,
-        .model-card:focus-visible .model-photo img {
-          transform: scale(1.1);
-        }
-
-        h3 {
-          margin: 20px 0 8px;
+        .model-name {
+          padding: 20px;
           font-size: 1.6rem;
-          font-weight: 800;
-          color: #00fff5;
-          text-shadow:
-            0 0 10px rgba(0, 255, 245, 0.9),
-            0 0 18px rgba(0, 255, 245, 0.55);
+          font-weight: 700;
+          color: #a0d8f7;
           text-align: center;
-          letter-spacing: 0.03em;
+          text-shadow:
+            0 0 8px #76e2f6aa,
+            0 0 15px #76e2f6bb;
+          user-select: none;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          user-select: none;
+          letter-spacing: 0.04em;
         }
 
         @media (max-width: 1024px) {
-          .models-container {
-            padding: 80px 30px 50px;
+          .models-page {
+            padding: 80px 30px;
           }
-          .models-title {
+          .page-title {
             font-size: 3rem;
             margin-bottom: 50px;
           }
-          .model-photo {
-            height: 400px;
-          }
-          h3 {
-            font-size: 1.4rem;
+          .models-grid {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
           }
         }
 
-        @media (max-width: 768px) {
-          .models-container {
-            padding: 70px 20px 40px;
+        @media (max-width: 640px) {
+          .models-page {
+            padding: 60px 20px;
+            margin-top: 40px;
           }
-          .models-list {
-            grid-template-columns: repeat(auto-fill, minmax(90vw, 1fr));
-            max-width: 100%;
-            gap: 28px;
-          }
-          .model-card {
-            width: 90vw;
-            max-width: 420px;
-          }
-          .model-photo {
-            height: 320px;
-          }
-          .models-title {
+          .page-title {
             font-size: 2.4rem;
             margin-bottom: 40px;
           }
-          h3 {
-            font-size: 1.2rem;
-            margin: 16px 0 6px;
+          .models-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+          }
+          .model-name {
+            font-size: 1.3rem;
+            padding: 18px 16px;
           }
         }
       `}</style>

@@ -1,4 +1,4 @@
-// pages/actress/[name].tsx
+import React from "react";
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import { modelsData } from "../../data/models";
@@ -39,7 +39,7 @@ export default function ActressPage() {
     <Layout>
       <main className="profile-page">
         <section className="profile-section">
-          <div className="profile-pic-wrapper" aria-label={`${actress.name} profile picture`}>
+          <div className="profile-pic-wrapper">
             <img
               src={actress.image}
               alt={actress.name}
@@ -52,8 +52,10 @@ export default function ActressPage() {
           <div className="profile-info">
             <h1>{actress.name}</h1>
             <p className="bio">{actress.bio}</p>
-            <div className="stats" aria-label="Video stats">
-              <span><strong>{relatedVideos.length}</strong> Videos</span>
+            <div className="stats">
+              <span>
+                <strong>{relatedVideos.length}</strong> Videos
+              </span>
               <span>Likes: --</span>
               <span>Dislikes: --</span>
               <span>Comments: --</span>
@@ -65,15 +67,16 @@ export default function ActressPage() {
           <h2>Latest Videos</h2>
           {relatedVideos.length > 0 ? (
             <div className="video-list">
-              {relatedVideos.map(([title, video], index) => (
+              {relatedVideos.map(([title, video]) => (
                 <VideoCard
-                  key={index}
+                  key={title}
                   title={title}
                   src={video.src}
                   description={video.description}
                   date={video.date}
                   info={video.info}
                   actress={video.actress}
+                  thumbnail={video.thumbnail} // Make sure to pass thumbnail!
                 />
               ))}
             </div>
@@ -210,7 +213,6 @@ export default function ActressPage() {
           color: #ff4c4c;
           font-weight: 700;
           font-size: 1.8rem;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         @media (max-width: 1024px) {
@@ -271,7 +273,6 @@ export default function ActressPage() {
 
           .stats {
             gap: 20px;
-            flex-wrap: wrap;
           }
 
           .videos-section h2 {
