@@ -31,6 +31,7 @@ export default function SearchPage() {
                 date={video.date}
                 info={video.info}
                 actress={video.actress}
+                thumbnail={video.thumbnail} // ✅ Added
               />
             ))}
           </div>
@@ -99,7 +100,7 @@ export default function SearchPage() {
         @media (max-width: 768px) {
           .search-page {
             padding: 90px 20px 40px;
-            margin-top:40px;
+            margin-top: 40px;
           }
           .search-title {
             font-size: 2rem;
