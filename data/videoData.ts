@@ -12,6 +12,17 @@ export type VideoInfo = {
 };
 
 export const videoData: Record<string, VideoInfo> = {
+  "Twins 1": {
+    title: "Twins 1",
+    src: "https://streamtape.com/e/MAwP781DWOHoYK/",
+    description: "Lesbian Fun",
+    date: "2011-11-11",
+    info: "Hell Convent",
+    actress: "Cindy Craves",
+    thumbnail: "/actresses/CindyCraves/tw1.jpg",
+    category: "Latest",
+  },
+  
   "Twisted Passions #02": {
     title: "Twisted Passions #02",
     src: "https://streamtape.com/e/9lMDzZxWoYha8vY/",

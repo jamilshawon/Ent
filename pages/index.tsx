@@ -27,6 +27,7 @@ export default function Home() {
 
   const videoData: Record<string, { title: string; thumbnail: string }[]> = {
     Latest: [
+       { title: "Twins 1", thumbnail: "/actresses/CindyCraves/tw1.jpg" },
       { title: "Twisted Passions #02", thumbnail: "/actresses/CindyCraves/tp2.jpg" },
       { title: "Two Mommies", thumbnail: "/actresses/CindyCraves/tm.jpg" },
        { title: "Women Seeking Womens 36", thumbnail: "/actresses/CindyCraves/wsw-36.jpg" },
