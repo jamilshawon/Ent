@@ -19,7 +19,7 @@ export const videoData: Record<string, VideoInfo> = {
     date: "2011-11-11",
     info: "Hell Convent",
     actress: "Cindy Craves",
-    thumbnail: "/actresses/CindyCraves/wsw-36.jpg",
+    thumbnail: "/actresses/CindyCraves/tp2.jpg",
     category: "Latest",
   },
   "Two Mommies": {
@@ -29,7 +29,7 @@ export const videoData: Record<string, VideoInfo> = {
     date: "2011-11-11",
     info: "Hell Convent",
     actress: "Cindy Craves",
-    thumbnail: "/actresses/CindyCraves/wsw-36.jpg",
+    thumbnail: "/actresses/CindyCraves/tm.jpg",
     category: "Latest",
   },
   "Women Seeking Women 73": {
@@ -39,7 +39,7 @@ export const videoData: Record<string, VideoInfo> = {
     date: "2011-11-11",
     info: "Hell Convent",
     actress: "Cindy Craves",
-    thumbnail: "/actresses/CindyCraves/wsw-36.jpg",
+    thumbnail: "/actresses/CindyCraves/wsw73.png",
     category: "Latest",
   },
   "Women Seeking Womens 36": {
@@ -59,7 +59,7 @@ export const videoData: Record<string, VideoInfo> = {
     date: "2011-11-11",
     info: "Hell Convent",
     actress: "Cindy Craves",
-    thumbnail: "/actresses/CindyCraves/wsw52.jpg",
+    thumbnail: "/actresses/CindyCraves/wsw36.jpg",
     category: "Latest",
   },
   "Women Seeking Women 52": {
