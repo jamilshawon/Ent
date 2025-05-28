@@ -27,6 +27,11 @@ export default function Home() {
 
   const videoData: Record<string, { title: string; thumbnail: string }[]> = {
     Latest: [
+      { title: "Twisted Passions #02", thumbnail: "/actresses/CindyCraves/tp2.jpg" },
+      { title: "Two Mommies", thumbnail: "/actresses/CindyCraves/tm.jpg" },
+       { title: "Women Seeking Womens 36", thumbnail: "/actresses/CindyCraves/wsw-36.jpg" },
+      { title: "Women Seeking Women 36", thumbnail: "/actresses/CindyCraves/wsw36.jpg" },
+      { title: "Women Seeking Women 52", thumbnail: "/actresses/CindyCraves/wsw52.jpg" },
       { title: "Women Seeking Women 54", thumbnail: "/actresses/CindyCraves/wsw54.jpg" },
        { title: "Women Seeking Women 73", thumbnail: "/actresses/CindyCraves/wsw73.png" },
       { title: "Women Seeking Women 107", thumbnail: "/actresses/CindyCraves/wsw107.png" },
