@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 
 const moviesData = [
-  { title: "Inception", thumbnail: "/thumbnails/inception.jpg" },
+  { title: "Rockstar", thumbnail: "/movies/rockstar-2011.jpg" },
   { title: "Interstellar", thumbnail: "/thumbnails/interstellar.jpg" },
   { title: "The Dark Knight", thumbnail: "/thumbnails/dark-knight.jpg" },
   { title: "Dune", thumbnail: "/thumbnails/dune.jpg" },

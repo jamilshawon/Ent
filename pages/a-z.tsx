@@ -2,6 +2,8 @@ import Header from '../components/Header';
 import styles from '../styles/Movies.module.css';
 import Link from 'next/link';
 
+import moviesData from '../data/movies';
+import tvShowsData from '../data/tvShows';
 
 interface Item {
   title: string;
@@ -9,25 +11,6 @@ interface Item {
   type: "Movie" | "TV Show";
 }
 
-const moviesData: Item[] = [
-  { title: "Inception", thumbnail: "/thumbnails/inception.jpg", type: "Movie" },
-  { title: "Interstellar", thumbnail: "/thumbnails/interstellar.jpg", type: "Movie" },
-  { title: "The Dark Knight", thumbnail: "/thumbnails/dark-knight.jpg", type: "Movie" },
-  { title: "Dune", thumbnail: "/thumbnails/dune.jpg", type: "Movie" },
-  { title: "Avengers: Endgame", thumbnail: "/thumbnails/endgame.jpg", type: "Movie" },
-  { title: "Joker", thumbnail: "/thumbnails/joker.jpg", type: "Movie" },
-];
-
-const tvShowsData: Item[] = [
-  { title: "Breaking Bad", thumbnail: "/thumbnails/breaking-bad.jpg", type: "TV Show" },
-  { title: "Stranger Things", thumbnail: "/thumbnails/stranger-things.jpg", type: "TV Show" },
-  { title: "The Crown", thumbnail: "/thumbnails/the-crown.jpg", type: "TV Show" },
-  { title: "The Mandalorian", thumbnail: "/thumbnails/mandalorian.jpg", type: "TV Show" },
-  { title: "Game of Thrones", thumbnail: "/thumbnails/got.jpg", type: "TV Show" },
-  { title: "The Witcher", thumbnail: "/thumbnails/witcher.jpg", type: "TV Show" },
-];
-
-// Combine and sort A-Z
 const combinedData: Item[] = [...moviesData, ...tvShowsData].sort((a, b) =>
   a.title.localeCompare(b.title)
 );

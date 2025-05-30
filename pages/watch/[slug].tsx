@@ -10,7 +10,7 @@ interface VideoData {
 
 const allVideos: VideoData[] = [
   {
-    title: "Inception",
+    title: "Rockstar",
     videoUrl: "https://www.youtube.com/embed/YoHD9XEInc0",
     description: "A thief who steals corporate secrets through dream-sharing technology."
   },

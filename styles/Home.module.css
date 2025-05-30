@@ -19,17 +19,43 @@
 }
 
 .carouselItem {
+  position: relative;
   width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
 .carouselImage {
   width: 100%;
-  height: 400px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-  border: 3px solid #e50914; /* bright 
-  red border */
+  transition: transform 0.6s ease;
+  border-radius: 12px;
+}
+
+.carouselItem:hover .carouselImage {
+  transform: scale(1.05);
+}
+.carouselItem::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  z-index: 1;
+}
+.carouselItemTitle {
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  z-index: 2;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
 }
 
 .heading {
@@ -160,14 +186,19 @@
   }
 
   .carouselItem {
-    padding: 0 5px;
+    height: 220px;
+  }
+  .carouselItemTitle {
+    font-size: 16px;
+    bottom: 12px;
+    left: 16px;
   }
 }
 
 /* Extra small devices */
 @media (max-width: 480px) {
   .container{
-    margin-top: 120px;;
+    margin-top: 130px;;
   }
   .carouselImage {
     height: 180px;
@@ -179,6 +210,14 @@
 
   .title {
     font-size: 12px;
+  }
+  .carouselItem {
+    height: 180px;
+  }
+  .carouselItemTitle {
+    font-size: 14px;
+    bottom: 10px;
+    left: 12px;
   }
 }
 

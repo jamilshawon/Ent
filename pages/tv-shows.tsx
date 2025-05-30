@@ -1,15 +1,7 @@
 import Header from '../components/Header';
 import styles from '../styles/Movies.module.css';
 import Link from 'next/link';
-
-const tvShowsData = [
-  { title: "Breaking Bad", thumbnail: "/thumbnails/breaking-bad.jpg" },
-  { title: "Stranger Things", thumbnail: "/thumbnails/stranger-things.jpg" },
-  { title: "The Crown", thumbnail: "/thumbnails/the-crown.jpg" },
-  { title: "The Mandalorian", thumbnail: "/thumbnails/mandalorian.jpg" },
-  { title: "Game of Thrones", thumbnail: "/thumbnails/got.jpg" },
-  { title: "The Witcher", thumbnail: "/thumbnails/witcher.jpg" },
-];
+import tvShowsData from '../data/tvShows';  // <-- Import the shared data
 
 export default function TVShowsPage() {
   return (

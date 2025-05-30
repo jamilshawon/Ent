@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Header from '../components/Header';
 import styles from '../styles/Home.module.css';
+import moviesData from '../data/movies';
+import tvShowsData from '../data/tvShows';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -15,23 +17,16 @@ const Slider = dynamic<React.ComponentType<Settings>>(
   { ssr: false }
 );
 
-const featuredMovies = [
-  { title: "Inception", thumbnail: "/thumbnails/inception.jpg" },
-  { title: "Interstellar", thumbnail: "/thumbnails/interstellar.jpg" },
-  { title: "The Dark Knight", thumbnail: "/thumbnails/dark-knight.jpg" },
+import type { Item } from '../types/media'; // same path as used above
+
+const featuredItems: Item[] = [
+  ...moviesData.slice(0, 3),
+  ...tvShowsData.slice(0, 3),
 ];
 
-const latestMovies = [
-  { title: "Dune", thumbnail: "/thumbnails/dune.jpg" },
-  { title: "Avengers: Endgame", thumbnail: "/thumbnails/endgame.jpg" },
-  { title: "Joker", thumbnail: "/thumbnails/joker.jpg" },
-];
 
-const latestTVShows = [
-  { title: "Breaking Bad", thumbnail: "/thumbnails/breaking-bad.jpg" },
-  { title: "Stranger Things", thumbnail: "/thumbnails/stranger-things.jpg" },
-  { title: "The Witcher", thumbnail: "/thumbnails/witcher.jpg" },
-];
+const latestMovies = moviesData.slice(0, 6);
+const latestTVShows = tvShowsData.slice(0, 6);
 
 export default function HomePage() {
   const [isClient, setIsClient] = useState(false);
@@ -95,21 +90,25 @@ export default function HomePage() {
       <main className={styles.container}>
         <section className={styles.carouselSection}>
           <Slider {...sliderSettings}>
-            {featuredMovies.map((movie, idx) => (
+            {featuredItems.map((item, idx) => (
               <div key={idx} className={styles.carouselItem}>
-                <Link href={`/watch/${movie.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
+                <Link href={`/watch/${item.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
                   <Image
-                    src={movie.thumbnail}
-                    alt={movie.title}
+                    src={item.thumbnail}
+                    alt={item.title}
                     width={1000}
                     height={400}
                     className={styles.carouselImage}
-                    priority
+                    priority={idx === 0}
                   />
+                  <div className={styles.carouselItemTitle}>
+                    {item.title}
+                  </div>
                 </Link>
               </div>
             ))}
           </Slider>
+
         </section>
 
         {renderSection("🎬 Latest Movies", latestMovies, "/movies")}
