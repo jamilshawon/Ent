@@ -7,6 +7,8 @@ import Header from '../components/Header';
 import styles from '../styles/Home.module.css';
 import moviesData from '../data/movies';
 import tvShowsData from '../data/tvShows';
+import { slugify } from '../utils/slugify';
+
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -63,7 +65,8 @@ export default function HomePage() {
         {items.map((item, idx) => (
           <Link
             key={idx}
-            href={`/watch/${item.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+            href={`/watch/${slugify(item.title)}`}
+
             className={styles.card}
           >
             <div className={styles.thumbnailWrapper}>

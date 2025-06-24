@@ -15,7 +15,7 @@ export default function VideoPage() {
     }
   > = {
     "Rockstar(2011)": {
-      src: "https://drive.google.com/file/d/1KMcN8Vu53QbrZs-5GqU3R_btFios-Zn0/preview", // ✅ Streamtape embed link
+      src: "https://dh-headlines-shut-loved.trycloudflare.com/Rockstar.mp4", // ✅ Streamtape embed link
       description: "A musical journey of a troubled artist finding meaning through music.",
       date: "2011-11-11",
       info: "Starring Ranbir Kapoor. Directed by Imtiaz Ali.",

@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
 import Header from '../../components/Header';
 import styles from '../../styles/Movies.module.css';
+import { slugify } from '../../utils/slugify';
+
 
 interface VideoData {
   title: string;
@@ -10,9 +12,8 @@ interface VideoData {
 
 const allVideos: VideoData[] = [
   {
-    title: "Rockstar",
-    videoUrl: "https://www.youtube.com/embed/YoHD9XEInc0",
-    description: "A thief who steals corporate secrets through dream-sharing technology."
+    title: "Rockstar(2011)",
+    videoUrl: "https://plymouth-string-sold-funeral.trycloudflare.com/Rockstar.mp4"
   },
   {
     title: "Breaking Bad",
@@ -26,7 +27,9 @@ export default function WatchPage() {
   const router = useRouter();
   const { slug } = router.query;
 
-  const video = allVideos.find(v => v.title.toLowerCase().replace(/\s+/g, "-") === slug);
+  const video = allVideos.find(v => slugify(v.title) === slug);
+
+
 
   if (!video) return <p style={{ padding: "2rem" }}>Video not found.</p>;
 
