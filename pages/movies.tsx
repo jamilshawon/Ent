@@ -1,10 +1,10 @@
 import Header from '../components/Header';
 import styles from '../styles/Movies.module.css';
 import Link from 'next/link';
-
+import { slugify } from '../utils/slugify';
 
 const moviesData = [
-  { title: "Rockstar", thumbnail: "/movies/rockstar-2011.jpg" },
+  { title: "Rockstar(2011)", thumbnail: "/movies/rockstar-2011.jpg" },
   { title: "Interstellar", thumbnail: "/thumbnails/interstellar.jpg" },
   { title: "The Dark Knight", thumbnail: "/thumbnails/dark-knight.jpg" },
   { title: "Dune", thumbnail: "/thumbnails/dune.jpg" },
@@ -20,11 +20,11 @@ export default function MoviesPage() {
         <h2 className={styles.heading}>🎬 Latest Movies</h2>
         <div className={styles.grid}>
           {moviesData.map((movie, index) => (
-            <Link
-              key={index}
-              href={`/watch/${movie.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
-              className={styles.card}
-            >
+      <Link
+        key={index}
+        href={`/watch/${slugify(movie.title)}`}
+        className={styles.card}
+      >
               <div className={styles.thumbnailWrapper}>
                 <img
                   src={movie.thumbnail}
