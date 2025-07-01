@@ -13,7 +13,7 @@ interface VideoData {
 const allVideos: VideoData[] = [
   {
     title: 'Rockstar(2011)',
-    videoUrl: 'https://herbs-collectables-accuracy-g.trycloudflare.com/Rockstar.mp4',
+    videoUrl: 'https://stephanie-sanyo-memo-lawyer.trycloudflare.com./Rockstar.mp4',
     description: 'Musical journey of a troubled artist.',
     date: '2011-11-11',
     info: 'Ranbir Kapoor, dir. Imtiaz Ali.',
